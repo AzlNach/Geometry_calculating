@@ -1,0 +1,112 @@
+body, h1, h2, p, ul, li, form {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    text-align: center;
+    background-color: #f4f4f4;
+    padding: 20px;
+    
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+
+nav li {
+    margin: 0 15px;
+    
+}
+
+nav a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+section {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+svg {
+    margin-bottom: 20px;
+    justify-content: center;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#keliling-submit, #luas-submit{
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+#luas-result,
+#keliling-result {
+    margin-top: 10px;
+    font-weight: bold;
+    display: block;
+}
+
+#luas-form,
+#keliling-form {
+    display: block;
+}
+
+#gambar {
+    display: flex;
+    justify-content: center;
+}
+#luas-clear,#keliling-clear{
+    margin-left: auto;
+    background-color: #fd8700;
+}
+button[type="button"]:hover {
+    background-color: #543300;
+}
+
+.nav-link {
+    font-size: 18px; /* Atur ukuran font sesuai kebutuhan */
+    text-decoration: none; /* Menghilangkan garis bawah */
+    color:white /* Warna teks */
+}
+
+.nav-link:hover {
+    text-decoration: underline; /* Garis bawah saat hover */
+}
+
+
