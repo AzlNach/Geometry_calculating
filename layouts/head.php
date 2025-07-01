@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,15 +15,12 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" />
     
-
+    <!-- Add the landing page CSS -->
+    <link rel="stylesheet" href="css/landing.css">
 </head>
 
 <body>
     <div class="container-fluid">
         <div class="row flex-nowrap">
-            <div
-                class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark bg-gradient rounded-end-3 vh-100 position-sticky top-0">
-            <?php include_once('sidebar.php')?>
-            </div>
             <div class="col py-1">
                 <div class=" py-2"></div>
