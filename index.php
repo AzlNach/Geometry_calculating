@@ -10,7 +10,7 @@ require_once('layouts/head.php');
             <div class="col-md-6">
                 <h1 class="display-4 fw-bold mb-3">Geometry Calculator</h1>
                 <p class="lead mb-4">Calculate area, perimeter, and volume of geometric shapes with real-time interactive visualizations.</p>
-                <a href="luasindex.php" class="btn btn-primary btn-lg">Calculate Triangle Area</a>
+                <a href="#demo-previews-section" class="btn btn-primary btn-lg">Try Now</a>
             </div>
             <div class="col-md-6">
                 <div id="hero-canvas" class="rounded shadow" style="height: 400px; background-color: #f8f9fa;"></div>
@@ -23,46 +23,121 @@ require_once('layouts/head.php');
 <section class="features-section mb-5">
     <div class="container">
         <h2 class="text-center mb-4">Features</h2>
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <div class="card-body text-center">
-                        <div class="feature-icon mb-3">
-                            <span class="material-symbols-rounded" style="font-size: 48px; color: #3b5998;">
-                                change_history
-                            </span>
+        <div class="carousel">
+            <div class="group">
+                <!-- First set of cards -->
+                <div class="card-container">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <div class="feature-icon mb-3">
+                                <span class="material-symbols-rounded" style="font-size: 48px; color: #3b5998;">
+                                    change_history
+                                </span>
+                            </div>
+                            <h3 class="card-title">Geometry Calculations</h3>
+                            <p class="card-text">Calculate area, perimeter, and volume of various geometric shapes.</p>
+                            <a href="triangle-demo.php" class="btn btn-outline-primary">Try Now</a>
                         </div>
-                        <h3 class="card-title">Triangle Calculations</h3>
-                        <p class="card-text">Calculate the area of triangles with real-time visualization.</p>
-                        <a href="triangle-demo.php" class="btn btn-outline-primary">Try Now</a>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <div class="card-body text-center">
-                        <div class="feature-icon mb-3">
-                            <span class="material-symbols-rounded" style="font-size: 48px; color: #3b5998;">
-                                square
-                            </span>
+                <div class="card-container">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <div class="feature-icon mb-3">
+                                <span class="material-symbols-rounded" style="font-size: 48px; color: #3b5998;">
+                                    sync_alt
+                                </span>
+                            </div>
+                            <h3 class="card-title">Unit Conversion</h3>
+                            <p class="card-text">Convert between different units of measurement quickly and easily.</p>
+                            <a href="square-demo.php" class="btn btn-outline-primary">Try Now</a>
                         </div>
-                        <h3 class="card-title">Square Calculations</h3>
-                        <p class="card-text">Calculate the area and perimeter of squares with visualization.</p>
-                        <a href="square-demo.php" class="btn btn-outline-primary">Try Now</a>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <div class="card-body text-center">
-                        <div class="feature-icon mb-3">
-                            <span class="material-symbols-rounded" style="font-size: 48px; color: #3b5998;">
-                                radio_button_unchecked
-                            </span>
+                <div class="card-container">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <div class="feature-icon mb-3">
+                                <span class="material-symbols-rounded" style="font-size: 48px; color: #3b5998;">
+                                    show_chart
+                                </span>
+                            </div>
+                            <h3 class="card-title">Function Grapher</h3>
+                            <p class="card-text">Visualize mathematical functions with interactive graphing tools.</p>
+                            <a href="circle-demo.php" class="btn btn-outline-primary">Try Now</a>
                         </div>
-                        <h3 class="card-title">Circle Calculations</h3>
-                        <p class="card-text">Calculate the area and circumference of circles.</p>
-                        <a href="#" class="btn btn-outline-primary">Coming Soon</a>
+                    </div>
+                </div>
+                <div class="card-container">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <div class="feature-icon mb-3">
+                                <span class="material-symbols-rounded" style="font-size: 48px; color: #3b5998;">
+                                    bar_chart
+                                </span>
+                            </div>
+                            <h3 class="card-title">Statistics Calculator</h3>
+                            <p class="card-text">Calculate mean, median, mode, and other basic statistical measures.</p>
+                            <a href="triangle-demo.php" class="btn btn-outline-primary">Try Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Duplicate cards for infinite loop effect -->
+                <div class="card-container">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <div class="feature-icon mb-3">
+                                <span class="material-symbols-rounded" style="font-size: 48px; color: #3b5998;">
+                                    change_history
+                                </span>
+                            </div>
+                            <h3 class="card-title">Geometry Calculations</h3>
+                            <p class="card-text">Calculate area, perimeter, and volume of various geometric shapes.</p>
+                            <a href="triangle-demo.php" class="btn btn-outline-primary">Try Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-container">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <div class="feature-icon mb-3">
+                                <span class="material-symbols-rounded" style="font-size: 48px; color: #3b5998;">
+                                    sync_alt
+                                </span>
+                            </div>
+                            <h3 class="card-title">Unit Conversion</h3>
+                            <p class="card-text">Convert between different units of measurement quickly and easily.</p>
+                            <a href="square-demo.php" class="btn btn-outline-primary">Try Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-container">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <div class="feature-icon mb-3">
+                                <span class="material-symbols-rounded" style="font-size: 48px; color: #3b5998;">
+                                    show_chart
+                                </span>
+                            </div>
+                            <h3 class="card-title">Function Grapher</h3>
+                            <p class="card-text">Visualize mathematical functions with interactive graphing tools.</p>
+                            <a href="circle-demo.php" class="btn btn-outline-primary">Try Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-container">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <div class="feature-icon mb-3">
+                                <span class="material-symbols-rounded" style="font-size: 48px; color: #3b5998;">
+                                    bar_chart
+                                </span>
+                            </div>
+                            <h3 class="card-title">Statistics Calculator</h3>
+                            <p class="card-text">Calculate mean, median, mode, and other basic statistical measures.</p>
+                            <a href="triangle-demo.php" class="btn btn-outline-primary">Try Now</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -71,7 +146,7 @@ require_once('layouts/head.php');
 </section>
 
 <!-- Interactive Demo Section -->
-<section class="demo-previews-section mb-5">
+<section class="demo-previews-section mb-5" id ="demo-previews-section">
     <div class="container">
         <h2 class="text-center mb-4">Interactive Demos</h2>
         <div class="row">
@@ -81,7 +156,7 @@ require_once('layouts/head.php');
                         <h3 class="card-title mb-0">Triangle Calculator</h3>
                     </div>
                     <div class="card-body text-center">
-                        <img src="src/gambar-geometris-segitiga-paling-mudah-21.jpg" alt="Triangle Demo" class="img-fluid mb-3" style="height: 150px; object-fit: contain; background-color: #f8f9fa;">
+                        <img src="src/segitiga.png" alt="Triangle Demo" class="img-fluid mb-3" style="height: 150px; object-fit: contain; background-color: #f8f9fa;">
                         <p>Calculate the area of a triangle and see it visualized in real-time.</p>
                         <a href="triangle-demo.php" class="btn btn-outline-primary">Open Demo</a>
                     </div>
@@ -93,9 +168,25 @@ require_once('layouts/head.php');
                         <h3 class="card-title mb-0">Square Calculator</h3>
                     </div>
                     <div class="card-body text-center">
-                        <img src="img/square-demo-preview.png" alt="Square Demo" class="img-fluid mb-3" style="height: 150px; object-fit: contain; background-color: #f8f9fa;">
+                        <img src="src/squre.png" alt="Square Demo" class="img-fluid mb-3" style="height: 150px; object-fit: contain; background-color: #f8f9fa;">
                         <p>Calculate area and perimeter of a square with interactive visualization.</p>
                         <a href="square-demo.php" class="btn btn-outline-primary">Open Demo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="card-title mb-0">Circle Calculator</h3>
+                    </div>
+                    <div class="card-body text-center">
+                        <svg width="150" height="150" class="img-fluid mb-3" style="background-color: #f8f9fa;">
+                            <circle cx="75" cy="75" r="50" fill="rgba(59, 89, 152, 0.2)" stroke="#3b5998" stroke-width="2" />
+                            <line x1="75" y1="75" x2="125" y2="75" stroke="red" stroke-width="2" stroke-dasharray="5,3" />
+                            <text x="100" y="70" text-anchor="middle" fill="#3b5998" font-weight="bold" font-size="12">r</text>
+                        </svg>
+                        <p>Calculate area and circumference of a circle with interactive visualization.</p>
+                        <a href="circle-demo.php" class="btn btn-outline-primary">Open Demo</a>
                     </div>
                 </div>
             </div>

@@ -17,6 +17,7 @@
     
     <!-- Add the landing page CSS -->
     <link rel="stylesheet" href="css/landing.css">
+    <link rel="stylesheet" href="css/footer.css">
 </head>
 
 <body>

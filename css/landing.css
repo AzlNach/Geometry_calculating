@@ -111,3 +111,66 @@
         /* Taller on mobile */
     }
 }
+
+#demo-circle {
+    transition: all 0.5s ease;
+}
+
+#demo-radius-line {
+    transition: all 0.5s ease;
+}
+
+#radius-label,
+#area-label-circle,
+#circumference-label {
+    transition: all 0.5s ease;
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 290px;
+    overflow: hidden;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.carousel:hover .group {
+    animation-play-state: paused;
+}
+
+.group {
+    position: absolute;
+    display: flex;
+    flex-wrap: nowrap;
+    width: fit-content;
+    will-change: transform;
+    animation: scrolling 10s linear infinite;
+}
+
+.card-container {
+    flex: 0 0 auto;
+    width: 350px;
+    padding: 10px;
+}
+
+@keyframes scrolling {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+
+/* Responsive adjustments for carousel */
+
+@media (max-width: 768px) {
+    .carousel {
+        height: 500px;
+    }
+    .card-container {
+        width: 300px;
+    }
+}

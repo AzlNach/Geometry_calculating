@@ -97,5 +97,33 @@ document.addEventListener('DOMContentLoaded', function() {
     const demoHeightLine = document.getElementById('demo-height-line');
     const demoBaseLine = document.getElementById('demo-base-line');
 
+    // Handle feature carousel resizing
+    const carousel = document.querySelector('.carousel');
+    const group = document.querySelector('.group');
 
+    function adjustCarousel() {
+        // Check if elements exist
+        if (!carousel || !group) return;
+
+        // Get number of unique cards (first half of group children)
+        const uniqueCardCount = Math.floor(group.children.length / 2);
+        document.documentElement.style.setProperty('--card-count', uniqueCardCount);
+
+        // Get actual card width including padding
+        const cardWidth = document.querySelector('.card-container').offsetWidth;
+        document.documentElement.style.setProperty('--card-width', cardWidth + 'px');
+
+        // Calculate total width (needed for animation calculation)
+        const totalWidth = cardWidth * uniqueCardCount;
+        document.documentElement.style.setProperty('--total-width', totalWidth + 'px');
+
+        // Calculate appropriate animation duration based on content width
+        // Slower animation for wider content so speed remains consistent
+        const duration = Math.max(15, cardWidth * uniqueCardCount / 60);
+        group.style.animationDuration = `${duration}s`;
+    }
+
+    // Adjust on load and resize
+    window.addEventListener('load', adjustCarousel);
+    window.addEventListener('resize', adjustCarousel);
 });
