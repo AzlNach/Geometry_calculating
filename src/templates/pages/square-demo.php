@@ -1,6 +1,6 @@
 
 <?php 
-require_once('layouts/head.php');
+require_once(__DIR__ . '/../layouts/head.php');
 ?>
 
 <!-- Square Demo Section -->
@@ -73,14 +73,14 @@ require_once('layouts/head.php');
             </div>
         </div>
         <div class="text-center mt-4">
-            <a href="index.php" class="btn btn-outline-primary">Back to Home</a>
+            <a href="<?= BASE_URL ?>/index.php" class="btn btn-outline-primary">Back to Home</a>
         </div>
     </div>
 </section>
 
 <!-- Add the custom JavaScript for the square calculator -->
-<script src="js/square.js"></script>
+<script src="<?= JS_URL ?>/square.js"></script>
 
 <?php 
-require_once('layouts/foot.php');
+require_once(__DIR__ . '/../layouts/foot.php');
 ?>

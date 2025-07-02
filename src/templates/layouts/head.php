@@ -16,8 +16,8 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" />
     
     <!-- Add the landing page CSS -->
-    <link rel="stylesheet" href="css/landing.css">
-    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="<?= CSS_URL ?>/landing.css">
+    <link rel="stylesheet" href="<?= CSS_URL ?>/footer.css">
 </head>
 
 <body>

@@ -20,11 +20,10 @@
     <div class="footer-section">
         <h3>Quick Links</h3>
         <ul class="footer-links">
-            <li><a href="index.php"><span class="material-symbols-rounded">home</span>Home</a></li>
-            <li><a href="triangle-demo.php"><span class="material-symbols-rounded">change_history</span>Geometry Calculations</a></li>
-            <li><a href="square-demo.php"><span class="material-symbols-rounded">sync_alt</span>Unit Conversion</a></li>
-            <li><a href="circle-demo.php"><span class="material-symbols-rounded">show_chart</span>Function Grapher</a></li>
-            <li><a href="triangle-demo.php"><span class="material-symbols-rounded">bar_chart</span>Statistics Calculator</a></li>
+            <li><a href="<?= BASE_URL ?>"><span class="material-symbols-rounded">home</span>Home</a></li>
+            <li><a href="<?= BASE_URL ?>/triangle-demo.php"><span class="material-symbols-rounded">change_history</span>Triangle Calculator</a></li>
+            <li><a href="<?= BASE_URL ?>/square-demo.php"><span class="material-symbols-rounded">sync_alt</span>Square Calculator</a></li>
+            <li><a href="<?= BASE_URL ?>/circle-demo.php"><span class="material-symbols-rounded">show_chart</span>Circle Calculator</a></li>
         </ul>
     </div>
         <div class="footer-section">
@@ -59,8 +58,7 @@
 </script>
 
 <!-- Footer Animation JS -->
-<script src="js/footer.js"></script>
-
+<script src="<?= JS_URL ?>/footer.js"></script>
 </body>
 
 </html>
