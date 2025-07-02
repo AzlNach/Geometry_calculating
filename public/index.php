@@ -16,6 +16,7 @@ if ($isHomePage) {
     // If the router points to this file, it means we should render the main landing page.
     require_once(TEMPLATES_DIR . '/layouts/head.php');
     ?>
+    
 
     <!-- Hero Section with 3D Visualization -->
     <section class="hero-section mb-5">
@@ -34,7 +35,7 @@ if ($isHomePage) {
     </section>
 
         <!-- Features Section -->
-        <section class="features-section mb-5">
+        <section class="features-section mb-4">
             <div class="container">
                 <h2 class="text-center mb-4">Features</h2>
                 <div class="carousel">
@@ -50,7 +51,7 @@ if ($isHomePage) {
                                     </div>
                                     <h3 class="card-title">Geometry Calculations</h3>
                                     <p class="card-text">Calculate area, perimeter, and volume of various geometric shapes.</p>
-                                    <a href="<?= BASE_URL ?>/triangle-demo.php" class="btn btn-outline-primary">Try Now</a>
+                                    <a href="<?= BASE_URL ?>/geometry-calculations.php" class="btn btn-outline-primary">Try Now</a>
                                 </div>
                             </div>
                         </div>
@@ -64,7 +65,7 @@ if ($isHomePage) {
                                     </div>
                                     <h3 class="card-title">Unit Conversion</h3>
                                     <p class="card-text">Convert between different units of measurement quickly and easily.</p>
-                                    <a href="<?= BASE_URL ?>/square-demo.php" class="btn btn-outline-primary">Try Now</a>
+                                    <a href="<?= BASE_URL ?>/unit-conversion.php" class="btn btn-outline-primary">Try Now</a>
                                 </div>
                             </div>
                         </div>
@@ -78,7 +79,7 @@ if ($isHomePage) {
                                     </div>
                                     <h3 class="card-title">Function Grapher</h3>
                                     <p class="card-text">Visualize mathematical functions with interactive graphing tools.</p>
-                                    <a href="<?= BASE_URL ?>/circle-demo.php" class="btn btn-outline-primary">Try Now</a>
+                                    <a href="<?= BASE_URL ?>/function-grapher.php" class="btn btn-outline-primary">Try Now</a>
                                 </div>
                             </div>
                         </div>
@@ -92,7 +93,7 @@ if ($isHomePage) {
                                     </div>
                                     <h3 class="card-title">Statistics Calculator</h3>
                                     <p class="card-text">Calculate mean, median, mode, and other basic statistical measures.</p>
-                                    <a href="<?= BASE_URL ?>/triangle-demo.php" class="btn btn-outline-primary">Try Now</a>
+                                    <a href="<?= BASE_URL ?>/statistics-calculator.php" class="btn btn-outline-primary">Try Now</a>
                                 </div>
                             </div>
                         </div>
@@ -108,7 +109,7 @@ if ($isHomePage) {
                                     </div>
                                     <h3 class="card-title">Geometry Calculations</h3>
                                     <p class="card-text">Calculate area, perimeter, and volume of various geometric shapes.</p>
-                                    <a href="<?= BASE_URL ?>/triangle-demo.php" class="btn btn-outline-primary">Try Now</a>
+                                    <a href="<?= BASE_URL ?>/geometry-calculations.php" class="btn btn-outline-primary">Try Now</a>
                                 </div>
                             </div>
                         </div>
@@ -122,7 +123,7 @@ if ($isHomePage) {
                                     </div>
                                     <h3 class="card-title">Unit Conversion</h3>
                                     <p class="card-text">Convert between different units of measurement quickly and easily.</p>
-                                    <a href="<?= BASE_URL ?>/square-demo.php" class="btn btn-outline-primary">Try Now</a>
+                                    <a href="<?= BASE_URL ?>/unit-conversion.php" class="btn btn-outline-primary">Try Now</a>
                                 </div>
                             </div>
                         </div>
@@ -136,7 +137,7 @@ if ($isHomePage) {
                                     </div>
                                     <h3 class="card-title">Function Grapher</h3>
                                     <p class="card-text">Visualize mathematical functions with interactive graphing tools.</p>
-                                    <a href="<?= BASE_URL ?>/circle-demo.php" class="btn btn-outline-primary">Try Now</a>
+                                    <a href="<?= BASE_URL ?>/function-grapher.php" class="btn btn-outline-primary">Try Now</a>
                                 </div>
                             </div>
                         </div>
@@ -150,7 +151,7 @@ if ($isHomePage) {
                                     </div>
                                     <h3 class="card-title">Statistics Calculator</h3>
                                     <p class="card-text">Calculate mean, median, mode, and other basic statistical measures.</p>
-                                    <a href="<?= BASE_URL ?>/triangle-demo.php" class="btn btn-outline-primary">Try Now</a>
+                                    <a href="<?= BASE_URL ?>/statistics-calculator.php" class="btn btn-outline-primary">Try Now</a>
                                 </div>
                             </div>
                         </div>
@@ -159,60 +160,24 @@ if ($isHomePage) {
             </div>
         </section>
 
-    <!-- Interactive Demo Section -->
-    <section class="demo-previews-section mb-5" id="demo-previews-section">
-        <div class="container">
-            <h2 class="text-center mb-4">Interactive Demos</h2>
-            <div class="row">
-                <div class="col-md-6 mb-4">
-                    <div class="card">
-                        <div class="card-header bg-primary text-white">
-                            <h3 class="card-title mb-0">Triangle Calculator</h3>
-                        </div>
-                        <div class="card-body text-center">
-                            <img src="<?= IMAGES_URL ?>/segitiga.png" alt="Triangle Demo" class="img-fluid mb-3" style="height: 150px; object-fit: contain; background-color: #f8f9fa;">
-                            <p>Calculate the area of a triangle and see it visualized in real-time.</p>
-                            <a href="<?= BASE_URL ?>/triangle-demo.php" class="btn btn-outline-primary">Open Demo</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-4">
-                    <div class="card">
-                        <div class="card-header bg-primary text-white">
-                            <h3 class="card-title mb-0">Square Calculator</h3>
-                        </div>
-                        <div class="card-body text-center">
-                            <img src="<?= IMAGES_URL ?>/squre.png" alt="Square Demo" class="img-fluid mb-3" style="height: 150px; object-fit: contain; background-color: #f8f9fa;">
-                            <p>Calculate area and perimeter of a square with interactive visualization.</p>
-                            <a href="<?= BASE_URL ?>/square-demo.php" class="btn btn-outline-primary">Open Demo</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-4">
-                    <div class="card">
-                        <div class="card-header bg-primary text-white">
-                            <h3 class="card-title mb-0">Circle Calculator</h3>
-                        </div>
-                        <div class="card-body text-center">
-                            <img src="<?= IMAGES_URL ?>/circle.png" alt="Circle Demo" class="img-fluid mb-3" style="height: 150px; object-fit: contain; background-color: #f8f9fa;">
-                            <p>Calculate area and circumference of a circle with interactive visualization.</p>
-                            <a href="<?= BASE_URL ?>/circle-demo.php" class="btn btn-outline-primary">Open Demo</a>
-                        </div>
-                    </div>
+        <section class="demo-previews-section mb-5" id="demo-previews-section">
+            <div class="container">
+                <div class="row" id="demo-content">
+                    <!-- By default, only show Geometry Calculations -->
+                    <?php include(TEMPLATES_DIR . '/pages/geometry-calculations.php'); ?>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
         <!-- Why Choose Us Section -->
-        <section class="why-us-section mb-5">
+        <section class="why-us-section mb-2">
             <div class="container">
-                <h2 class="text-center mb-4">Why Choose Our Calculator</h2>
+                <h2 class="text-center mb-4 pb-5">Why Choose Our Calculator</h2>
                 <div class="row g-4">
                     <div class="col-md-3">
                         <div class="text-center mb-3">
                             <span class="material-symbols-rounded" style="font-size: 48px; color: #3b5998;">
-                                real_time_update
+                                update
                             </span>
                         </div>
                         <h4 class="text-center">Real-time Calculation</h4>
@@ -255,6 +220,7 @@ if ($isHomePage) {
 
         <!-- Add the custom JavaScript for the landing page -->
         <script src="<?= JS_URL ?>/landing.js"></script>
+        <script src="<?= JS_URL ?>/feature-loader.js"></script>
 
         <?php
         require_once(TEMPLATES_DIR . '/layouts/foot.php');
@@ -262,3 +228,4 @@ if ($isHomePage) {
             // If the router points to a different file (e.g., triangle-demo.php), include that file.
             require_once($targetFile);
 }
+?>

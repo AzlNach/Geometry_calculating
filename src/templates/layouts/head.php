@@ -21,7 +21,3 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="row flex-nowrap">
-            <div class="col py-1">
-                <div class=" py-2"></div>

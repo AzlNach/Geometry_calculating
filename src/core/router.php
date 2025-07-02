@@ -14,7 +14,11 @@ class Router {
             '/index.php' => 'public/index.php',
             '/triangle-demo.php' => 'src/templates/pages/triangle-demo.php',
             '/square-demo.php' => 'src/templates/pages/square-demo.php',
-            '/circle-demo.php' => 'src/templates/pages/circle-demo.php'
+            '/circle-demo.php' => 'src/templates/pages/circle-demo.php',
+            '/geometry-calculations.php' => 'src/templates/pages/geometry-calculations.php',
+            '/unit-conversion.php' => 'src/templates/pages/unit-conversion.php',
+            '/function-grapher.php' => 'src/templates/pages/function-grapher.php',
+            '/statistics-calculator.php' => 'src/templates/pages/statistics-calculator.php'
         ];
     }
     
