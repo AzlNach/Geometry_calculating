@@ -121,6 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Slower animation for wider content so speed remains consistent
         const duration = Math.max(15, cardWidth * uniqueCardCount / 60);
         group.style.animationDuration = `${duration}s`;
+
     }
 
     // Adjust on load and resize

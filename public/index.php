@@ -60,12 +60,12 @@ if ($isHomePage) {
                                 <div class="card-body text-center">
                                     <div class="feature-icon mb-3">
                                         <span class="material-symbols-rounded" style="font-size: 48px; color: #3b5998;">
-                                            sync_alt
+                                            swap_horiz
                                         </span>
                                     </div>
-                                    <h3 class="card-title">Unit Conversion</h3>
-                                    <p class="card-text">Convert between different units of measurement quickly and easily.</p>
-                                    <a href="<?= BASE_URL ?>/unit-conversion.php" class="btn btn-outline-primary">Try Now</a>
+                                    <h3 class="card-title">Conversion Calculator</h3>
+                                    <p class="card-text">Convert between various units including digital data, temperature, and time.</p>
+                                    <a href="<?= BASE_URL ?>/conversion-calculator.php" class="btn btn-outline-primary">Try Now</a>
                                 </div>
                             </div>
                         </div>
@@ -77,9 +77,9 @@ if ($isHomePage) {
                                             show_chart
                                         </span>
                                     </div>
-                                    <h3 class="card-title">Function Grapher</h3>
-                                    <p class="card-text">Visualize mathematical functions with interactive graphing tools.</p>
-                                    <a href="<?= BASE_URL ?>/function-grapher.php" class="btn btn-outline-primary">Try Now</a>
+                                    <h3 class="card-title">Function Grapher Calculator</h3>
+                                    <p class="card-text">Visualize mathematical functions with interactive graphing tools and multiple plotting modes.</p>
+                                    <a href="<?= BASE_URL ?>/function-grapher-calculator.php" class="btn btn-outline-primary">Try Now</a>
                                 </div>
                             </div>
                         </div>
@@ -118,12 +118,12 @@ if ($isHomePage) {
                                 <div class="card-body text-center">
                                     <div class="feature-icon mb-3">
                                         <span class="material-symbols-rounded" style="font-size: 48px; color: #3b5998;">
-                                            sync_alt
+                                            swap_horiz
                                         </span>
                                     </div>
-                                    <h3 class="card-title">Unit Conversion</h3>
-                                    <p class="card-text">Convert between different units of measurement quickly and easily.</p>
-                                    <a href="<?= BASE_URL ?>/unit-conversion.php" class="btn btn-outline-primary">Try Now</a>
+                                    <h3 class="card-title">Conversion Calculator</h3>
+                                    <p class="card-text">Convert between various units including digital data, temperature, and time.</p>
+                                    <a href="<?= BASE_URL ?>/conversion-calculator.php" class="btn btn-outline-primary">Try Now</a>
                                 </div>
                             </div>
                         </div>
@@ -135,9 +135,9 @@ if ($isHomePage) {
                                             show_chart
                                         </span>
                                     </div>
-                                    <h3 class="card-title">Function Grapher</h3>
-                                    <p class="card-text">Visualize mathematical functions with interactive graphing tools.</p>
-                                    <a href="<?= BASE_URL ?>/function-grapher.php" class="btn btn-outline-primary">Try Now</a>
+                                    <h3 class="card-title">Function Grapher Calculator</h3>
+                                    <p class="card-text">Visualize mathematical functions with interactive graphing tools and multiple plotting modes.</p>
+                                    <a href="<?= BASE_URL ?>/function-grapher-calculator.php" class="btn btn-outline-primary">Try Now</a>
                                 </div>
                             </div>
                         </div>

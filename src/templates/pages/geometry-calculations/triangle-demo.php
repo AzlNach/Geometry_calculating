@@ -1,6 +1,6 @@
 
 <?php 
-require_once(__DIR__ . '/../layouts/head.php');
+require_once(__DIR__ . '/../../layouts/head.php');
 ?>
 
 <!-- Interactive Triangle Demo Section -->
@@ -92,5 +92,5 @@ require_once(__DIR__ . '/../layouts/head.php');
 
 
 <?php 
-require_once(__DIR__ . '/../layouts/foot.php');
+require_once(__DIR__ . '/../../layouts/foot.php');
 ?>

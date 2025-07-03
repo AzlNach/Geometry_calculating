@@ -1,6 +1,6 @@
 
 <?php 
-require_once(__DIR__ . '/../layouts/head.php');
+require_once(__DIR__ . '/../../layouts/head.php');
 ?>
 
 <!-- Circle Demo Section -->
@@ -85,5 +85,5 @@ require_once(__DIR__ . '/../layouts/head.php');
 <script src="<?= JS_URL ?>/circle.js"></script>
 
 <?php 
-require_once(__DIR__ . '/../layouts/foot.php');
+require_once(__DIR__ . '/../../layouts/foot.php');
 ?>

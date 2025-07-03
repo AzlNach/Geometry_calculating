@@ -1,8 +1,9 @@
+
 <?php
 // Only include the head if this is not an AJAX request
 $isAjax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest';
 if (!$isAjax) {
-    require_once(__DIR__ . '/../../config.php');
+    require_once(__DIR__ . '/../../../config.php');
     require_once(TEMPLATES_DIR . '/layouts/head.php');
 }
 ?>
@@ -35,27 +36,13 @@ if (!$isAjax) {
                                 <div class="col-md-3">
                                     <label for="from-unit" class="form-label">Unit:</label>
                                     <select class="form-select" id="from-unit">
-                                        <option value="m">Meters</option>
-                                        <option value="cm">Centimeters</option>
-                                        <option value="mm">Millimeters</option>
-                                        <option value="km">Kilometers</option>
-                                        <option value="in">Inches</option>
-                                        <option value="ft">Feet</option>
-                                        <option value="yd">Yards</option>
-                                        <option value="mi">Miles</option>
+                                        <!-- Will be populated by JS -->
                                     </select>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="to-unit" class="form-label">To Unit:</label>
                                     <select class="form-select" id="to-unit">
-                                        <option value="m">Meters</option>
-                                        <option value="cm" selected>Centimeters</option>
-                                        <option value="mm">Millimeters</option>
-                                        <option value="km">Kilometers</option>
-                                        <option value="in">Inches</option>
-                                        <option value="ft">Feet</option>
-                                        <option value="yd">Yards</option>
-                                        <option value="mi">Miles</option>
+                                        <!-- Will be populated by JS -->
                                     </select>
                                 </div>
                             </div>
@@ -67,13 +54,17 @@ if (!$isAjax) {
                 </div>
             </div>
         </div>
+        <div class="text-center mt-4">
+            <a href="<?= BASE_URL ?>/index.php" class="btn btn-outline-primary">Back to Home</a>
+        </div>
     </div>
 </section>
 
+<!-- Add the custom JavaScript for the unit converter -->
 <script src="<?= JS_URL ?>/unit-conversion.js"></script>
-<script>
 
-    if (typeof initUnitConverter === 'function') {
-        initUnitConverter();
-    }
-</script>
+<?php 
+if (!$isAjax) {
+    require_once(TEMPLATES_DIR . '/layouts/foot.php');
+}
+?>
