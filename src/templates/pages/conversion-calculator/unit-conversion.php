@@ -8,7 +8,7 @@ if (!$isAjax) {
 }
 ?>
 
-<section class="demo-section mb-2">
+<section class="demo-section mb-5">
     <div class="container">
         <h2 class="text-center mb-4">Unit Conversion</h2>
         <div class="row">
