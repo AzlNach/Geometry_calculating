@@ -223,7 +223,6 @@ h6 {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
     position: relative;
     overflow: hidden;
-    margin: 0;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -492,6 +491,10 @@ h6 {
     overflow: hidden;
 }
 
+.carousel .card-title {
+    color: var(--primary-color);
+}
+
 .carousel .card::before {
     content: '';
     position: absolute;
@@ -728,8 +731,9 @@ h6 {
 .card-title {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    color: var(--primary-color);
+    color: whitesmoke;
     transition: var(--transition);
+    text-align: center;
 }
 
 .card:hover .card-title {

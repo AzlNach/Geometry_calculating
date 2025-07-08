@@ -17,9 +17,28 @@ if ($isHomePage) {
     require_once(TEMPLATES_DIR . '/layouts/head.php');
     ?>
     
+    <header class="header">
+        <nav class="navbar">
+            <a href="<?= BASE_URL ?>" class="logo">
+                <span class="material-symbols-rounded logo-icon">calculate</span>
+                GeoCalc+
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#features-section" class="nav-link">Features</a></li>
+                <li><a href="#demo-previews-section" class="nav-link">Demos</a></li>
+                <li><a href="#why-us-section" class="nav-link">Why Us</a></li>
+                <li><a href="<?= BASE_URL ?>/tutorials.php" class="nav-link">Tutorials</a></li>
+                <li><a href="#demo-previews-section" class="btn nav-cta">Get Started</a></li>
+            </ul>
 
+            <button class="mobile-menu-toggle">
+                <span class="material-symbols-rounded">menu</span>
+            </button>
+        </nav>
+    </header>
     <!-- Hero Section with 3D Visualization -->
-    <section class="hero-section mb-5">
+    <section class="hero-section mb-0">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6">
@@ -35,8 +54,8 @@ if ($isHomePage) {
     </section>
 
         <!-- Features Section -->
-        <section class="features-section mb-4">
-            <div class="container">
+        <section class="features-section mb-4" id ="features-section">
+            <div class="container mt-5">
                 <h2 class="text-center mb-4">Features</h2>
                 <div class="carousel">
                     <div class="group">
@@ -160,7 +179,7 @@ if ($isHomePage) {
             </div>
         </section>
 
-        <section class="demo-previews-section mb-5" id="demo-previews-section">
+        <section class="demo-previews-section mb-0" id="demo-previews-section">
             <div class="container">
                 <div class="row" id="demo-content">
                     <!-- By default, only show Geometry Calculations -->
@@ -170,7 +189,7 @@ if ($isHomePage) {
         </section>
 
         <!-- Why Choose Us Section -->
-        <section class="why-us-section mb-2">
+        <section class="why-us-section mb-2" id="why-us-section">
             <div class="container">
                 <h2 class="text-center mb-4 pb-5">Why Choose Our Calculator</h2>
                 <div class="row g-4">
