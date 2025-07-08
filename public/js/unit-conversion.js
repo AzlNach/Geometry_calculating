@@ -1,17 +1,17 @@
 function initializeUnitConverter() {
-    // Get DOM elements
+
     const conversionType = document.getElementById('conversion-type');
     const fromValue = document.getElementById('from-value');
     const fromUnit = document.getElementById('from-unit');
     const toUnit = document.getElementById('to-unit');
     const result = document.getElementById('conversion-result');
 
-    // Check if all required elements exist. If not, this script is not for the current page.
+
     if (!conversionType || !fromValue || !fromUnit || !toUnit || !result) {
         return;
     }
 
-    // Define unit conversion factors relative to base units
+
     const conversionFactors = {
         length: { m: 1, cm: 0.01, mm: 0.001, km: 1000, in: 0.0254, ft: 0.3048, yd: 0.9144, mi: 1609.34 },
         area: { m2: 1, cm2: 0.0001, mm2: 0.000001, km2: 1000000, ha: 10000, in2: 0.00064516, ft2: 0.092903, ac: 4046.86 },
@@ -19,7 +19,7 @@ function initializeUnitConverter() {
         weight: { kg: 1, g: 0.001, mg: 0.000001, t: 1000, lb: 0.453592, oz: 0.0283495, st: 6.35029 }
     };
 
-    // Display names for units
+
     const unitDisplayNames = {
         length: { m: "Meters (m)", cm: "Centimeters (cm)", mm: "Millimeters (mm)", km: "Kilometers (km)", in: "Inches (in)", ft: "Feet (ft)", yd: "Yards (yd)", mi: "Miles (mi)" },
         area: { m2: "Square Meters (m²)", cm2: "Square Centimeters (cm²)", mm2: "Square Millimeters (mm²)", km2: "Square Kilometers (km²)", ha: "Hectares (ha)", in2: "Square Inches (in²)", ft2: "Square Feet (ft²)", ac: "Acres (ac)" },
@@ -27,7 +27,7 @@ function initializeUnitConverter() {
         weight: { kg: "Kilograms (kg)", g: "Grams (g)", mg: "Milligrams (mg)", t: "Metric Tons (t)", lb: "Pounds (lb)", oz: "Ounces (oz)", st: "Stone (st)" }
     };
 
-    // Function to update unit select options based on conversion type
+
     function updateUnitOptions() {
         const type = conversionType.value;
         const units = conversionFactors[type];
@@ -50,7 +50,7 @@ function initializeUnitConverter() {
         updateConversion();
     }
 
-    // Function to perform the conversion
+
     function updateConversion() {
         const type = conversionType.value;
         const value = parseFloat(fromValue.value);
@@ -69,15 +69,15 @@ function initializeUnitConverter() {
         result.textContent = `Result: ${formattedResult} ${unitDisplay}`;
     }
 
-    // Add event listeners
+
     conversionType.addEventListener('change', updateUnitOptions);
     fromValue.addEventListener('input', updateConversion);
     fromUnit.addEventListener('change', updateConversion);
     toUnit.addEventListener('change', updateConversion);
 
-    // Initialize the form
+
     updateUnitOptions();
 }
 
-// Try to initialize on load
+
 initializeUnitConverter();

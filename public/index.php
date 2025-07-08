@@ -1,7 +1,7 @@
 <?php
 
 
-// Include necessary configuration and router files
+
 require_once(__DIR__ . '/../src/config.php');
 require_once(__DIR__ . '/../src/core/router.php');
 
@@ -10,10 +10,10 @@ $targetFile = $router->resolve($_SERVER['REQUEST_URI']);
 
 $isHomePage = realpath($targetFile) === realpath(__FILE__);
 
-// The router returns the full path to the file that should be included.
-// This could be index.php itself or one of the template pages.
+
+
 if ($isHomePage) {
-    // If the router points to this file, it means we should render the main landing page.
+
     require_once(TEMPLATES_DIR . '/layouts/head.php');
     ?>
     
@@ -37,7 +37,7 @@ if ($isHomePage) {
             </button>
         </nav>
     </header>
-    <!-- Hero Section with 3D Visualization -->
+    
     <section class="hero-section mb-0">
         <div class="container">
             <div class="row align-items-center">
@@ -53,13 +53,13 @@ if ($isHomePage) {
         </div>
     </section>
 
-        <!-- Features Section -->
+        
         <section class="features-section mb-4" id ="features-section">
             <div class="container mt-5">
                 <h2 class="text-center mb-4">Features</h2>
                 <div class="carousel">
                     <div class="group">
-                        <!-- First set of cards -->
+                        
                         <div class="card-container">
                             <div class="card h-100">
                                 <div class="card-body text-center">
@@ -117,7 +117,7 @@ if ($isHomePage) {
                             </div>
                         </div>
                         
-                        <!-- Duplicate cards for infinite loop effect -->
+                        
                         <div class="card-container">
                             <div class="card h-100">
                                 <div class="card-body text-center">
@@ -182,13 +182,13 @@ if ($isHomePage) {
         <section class="demo-previews-section mb-0" id="demo-previews-section">
             <div class="container">
                 <div class="row" id="demo-content">
-                    <!-- By default, only show Geometry Calculations -->
+                    
                     <?php include(TEMPLATES_DIR . '/pages/geometry-calculations.php'); ?>
                 </div>
             </div>
         </section>
 
-        <!-- Why Choose Us Section -->
+        
         <section class="why-us-section mb-2" id="why-us-section">
             <div class="container">
                 <h2 class="text-center mb-4 pb-5">Why Choose Our Calculator</h2>
@@ -233,18 +233,20 @@ if ($isHomePage) {
             </div>
         </section>
 
-        <!-- Add Three.js library -->
+        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/controls/OrbitControls.js"></script>
-
-        <!-- Add the custom JavaScript for the landing page -->
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+        <script src="<?= JS_URL ?>/hero-animation.js"></script>
+        
         <script src="<?= JS_URL ?>/landing.js"></script>
         <script src="<?= JS_URL ?>/feature-loader.js"></script>
 
         <?php
         require_once(TEMPLATES_DIR . '/layouts/foot.php');
         } else {
-            // If the router points to a different file (e.g., triangle-demo.php), include that file.
+
             require_once($targetFile);
 }
 ?>

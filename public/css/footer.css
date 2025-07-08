@@ -1,5 +1,3 @@
-/* Modern Footer Styles */
-
 .footer {
     background: var(--primary-color, #213448);
     color: #fff;
@@ -131,9 +129,6 @@
 .social-links a .material-symbols-rounded {
     font-size: 22px;
 }
-
-
-/* Newsletter Section */
 
 .newsletter-form {
     margin-top: 25px;

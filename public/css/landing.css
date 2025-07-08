@@ -1,9 +1,4 @@
-/* Import modern fonts */
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
-
-/* Root variables for consistent theming */
-
 :root {
     --primary-color: #213448;
     --primary-dark: #1a2a3a;
@@ -21,9 +16,6 @@
     --border-radius: 16px;
     --header-height: 80px;
 }
-
-
-/* Global styles */
 
 * {
     margin: 0;
@@ -48,9 +40,6 @@ h6 {
     font-weight: 600;
     color: var(--primary-color);
 }
-
-
-/* Header Navigation */
 
 .header {
     position: fixed;
@@ -176,9 +165,6 @@ h6 {
     background: rgba(33, 52, 72, 0.1);
 }
 
-
-/* Mobile Navigation */
-
 @media (max-width: 768px) {
     .navbar {
         padding: 0 1rem;
@@ -214,9 +200,6 @@ h6 {
         font-size: 1.5rem;
     }
 }
-
-
-/* Hero Section */
 
 .hero-section {
     padding: calc(var(--header-height) + 60px) 0 80px;
@@ -385,9 +368,6 @@ h6 {
     }
 }
 
-
-/* Features Section */
-
 .features-section {
     padding: 100px 0;
     background: var(--light-bg);
@@ -436,9 +416,6 @@ h6 {
         width: 80px;
     }
 }
-
-
-/* Enhanced Carousel Styles */
 
 .carousel {
     position: relative;
@@ -524,9 +501,6 @@ h6 {
     }
 }
 
-
-/* Demo Section */
-
 .demo-previews-section {
     padding: 80px 0;
     background: white;
@@ -544,9 +518,6 @@ h6 {
     background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
     border-radius: 2px;
 }
-
-
-/* Why Choose Us Section */
 
 .why-us-section {
     padding: 100px 0;
@@ -642,9 +613,6 @@ h6 {
     font-size: 1rem;
     line-height: 1.6;
 }
-
-
-/* Card Styles */
 
 .card {
     transition: var(--transition);
@@ -746,9 +714,6 @@ h6 {
     line-height: 1.6;
 }
 
-
-/* Button Styles */
-
 .btn-primary,
 .bg-primary {
     background-color: var(--primary-color) !important;
@@ -819,9 +784,6 @@ h6 {
     box-shadow: var(--shadow-md);
 }
 
-
-/* SVG Styles */
-
 #demo-triangle-svg {
     max-width: 100%;
     height: auto;
@@ -855,9 +817,6 @@ h6 {
     transition: all 0.5s ease;
 }
 
-
-/* Scroll Animations */
-
 .animate-on-scroll {
     opacity: 0;
     transform: translateY(30px);
@@ -868,9 +827,6 @@ h6 {
     opacity: 1;
     transform: translateY(0);
 }
-
-
-/* Responsive Design */
 
 @media (max-width: 768px) {
     .hero-section {
@@ -923,4 +879,31 @@ h6 {
         padding: 14px 30px;
         font-size: 1rem;
     }
+}
+
+.hero-section .shapes-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.hero-section .shape {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.1);
+    will-change: transform, opacity;
+    border-radius: 20%;
+    transition: background-color 0.3s ease;
+}
+
+.hero-section .shape.circle {
+    border-radius: 50%;
+}
+
+.hero-section>.container {
+    position: relative;
+    z-index: 1;
 }

@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Three.js Hero Animation
+
     const heroCanvas = document.getElementById('hero-canvas');
     const width = heroCanvas.clientWidth;
     const height = heroCanvas.clientHeight;
 
-    // Initialize scene, camera and renderer
+
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0xf8f9fa);
 
@@ -15,12 +15,12 @@ document.addEventListener('DOMContentLoaded', function() {
     renderer.setSize(width, height);
     heroCanvas.appendChild(renderer.domElement);
 
-    // Add orbit controls
+
     const controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
 
-    // Create geometric shapes
+
     const triangleGeometry = new THREE.ConeGeometry(1.5, 2, 3);
     const triangleMaterial = new THREE.MeshPhongMaterial({
         color: 0x3b5998,
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const cubeMesh = new THREE.Mesh(cubeGeometry, cubeMaterial);
     scene.add(cubeMesh);
 
-    // Add lights
+
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
     scene.add(ambientLight);
 
@@ -58,11 +58,11 @@ document.addEventListener('DOMContentLoaded', function() {
     pointLight.position.set(5, 5, 5);
     scene.add(pointLight);
 
-    // Animation function
+
     function animate() {
         requestAnimationFrame(animate);
 
-        // Rotate the shapes
+
         triangleMesh.rotation.y += 0.01;
         sphereMesh.rotation.y += 0.01;
         cubeMesh.rotation.y += 0.01;
@@ -72,10 +72,10 @@ document.addEventListener('DOMContentLoaded', function() {
         renderer.render(scene, camera);
     }
 
-    // Start animation
+
     animate();
 
-    // Handle window resize
+
     window.addEventListener('resize', function() {
         const width = heroCanvas.clientWidth;
         const height = heroCanvas.clientHeight;
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
         renderer.setSize(width, height);
     });
 
-    // Interactive Triangle Demo
+
     const demoBase = document.getElementById('demo-base');
     const demoHeight = document.getElementById('demo-height');
     const demoBaseValue = document.getElementById('demo-base-value');
@@ -97,34 +97,34 @@ document.addEventListener('DOMContentLoaded', function() {
     const demoHeightLine = document.getElementById('demo-height-line');
     const demoBaseLine = document.getElementById('demo-base-line');
 
-    // Handle feature carousel resizing
+
     const carousel = document.querySelector('.carousel');
     const group = document.querySelector('.group');
 
     function adjustCarousel() {
-        // Check if elements exist
+
         if (!carousel || !group) return;
 
-        // Get number of unique cards (first half of group children)
+
         const uniqueCardCount = Math.floor(group.children.length / 2);
         document.documentElement.style.setProperty('--card-count', uniqueCardCount);
 
-        // Get actual card width including padding
+
         const cardWidth = document.querySelector('.card-container').offsetWidth;
         document.documentElement.style.setProperty('--card-width', cardWidth + 'px');
 
-        // Calculate total width (needed for animation calculation)
+
         const totalWidth = cardWidth * uniqueCardCount;
         document.documentElement.style.setProperty('--total-width', totalWidth + 'px');
 
-        // Calculate appropriate animation duration based on content width
-        // Slower animation for wider content so speed remains consistent
+
+
         const duration = Math.max(15, cardWidth * uniqueCardCount / 60);
         group.style.animationDuration = `${duration}s`;
 
     }
 
-    // Adjust on load and resize
+
     window.addEventListener('load', adjustCarousel);
     window.addEventListener('resize', adjustCarousel);
 });

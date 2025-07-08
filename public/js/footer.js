@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Animate social links on hover
+
     const socialLinks = document.querySelectorAll('.social-links a');
 
     socialLinks.forEach(link => {
@@ -12,14 +12,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Add year to copyright text
+
     const currentYear = new Date().getFullYear();
     const copyrightElement = document.querySelector('.copyright');
     if (copyrightElement) {
         copyrightElement.innerHTML = copyrightElement.innerHTML.replace(/\d{4}/, currentYear);
     }
 
-    // Add scroll to top functionality
+
     const footerSection = document.querySelector('.footer');
 
     if (footerSection) {

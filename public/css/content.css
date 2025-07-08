@@ -1,4 +1,10 @@
-body, h1, h2, p, ul, li, form {
+body,
+h1,
+h2,
+p,
+ul,
+li,
+form {
     margin: 0;
     padding: 0;
 }
@@ -11,7 +17,6 @@ header {
     text-align: center;
     background-color: #f4f4f4;
     padding: 20px;
-    
 }
 
 nav ul {
@@ -21,10 +26,8 @@ nav ul {
     margin-top: 20px;
 }
 
-
 nav li {
     margin: 0 15px;
-    
 }
 
 nav a {
@@ -46,10 +49,12 @@ section {
     background-color: #f2f2f2;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 svg {
     margin-bottom: 20px;
     justify-content: center;
 }
+
 label {
     display: block;
     margin-bottom: 5px;
@@ -63,7 +68,8 @@ input {
     border-radius: 4px;
 }
 
-#keliling-submit, #luas-submit{
+#keliling-submit,
+#luas-submit {
     padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
@@ -71,6 +77,7 @@ input {
     border-radius: 4px;
     cursor: pointer;
 }
+
 button[type="submit"]:hover {
     background-color: #0056b3;
 }
@@ -91,22 +98,23 @@ button[type="submit"]:hover {
     display: flex;
     justify-content: center;
 }
-#luas-clear,#keliling-clear{
+
+#luas-clear,
+#keliling-clear {
     margin-left: auto;
     background-color: #fd8700;
 }
+
 button[type="button"]:hover {
     background-color: #543300;
 }
 
 .nav-link {
-    font-size: 18px; /* Atur ukuran font sesuai kebutuhan */
-    text-decoration: none; /* Menghilangkan garis bawah */
-    color:white /* Warna teks */
+    font-size: 18px;
+    text-decoration: none;
+    color: white
 }
 
 .nav-link:hover {
-    text-decoration: underline; /* Garis bawah saat hover */
+    text-decoration: underline;
 }
-
-
