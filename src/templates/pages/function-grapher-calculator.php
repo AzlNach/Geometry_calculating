@@ -70,3 +70,8 @@ if (!$isAjax) {
         </div>
     </div>
 </section>
+<?php
+if (!$isAjax) {
+    require_once(TEMPLATES_DIR . '/layouts/foot.php');
+}
+?>

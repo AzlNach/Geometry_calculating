@@ -314,7 +314,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 8. Tambahkan efek hover pada canvas
     const overlay = heroCanvas.querySelector('.hero-overlay');
-    if (overlay) { // Check if overlay exists
+    if (overlay) {
         heroCanvas.addEventListener('mouseenter', () => {
             overlay.style.opacity = '1';
         });
@@ -323,7 +323,24 @@ document.addEventListener('DOMContentLoaded', function() {
             overlay.style.opacity = '0';
         });
     } else {
-        console.warn("Hero overlay element (.hero-overlay) not found inside #hero-canvas.");
+        // Jika overlay tidak ditemukan, buat secara dinamis
+        const newOverlay = document.createElement('div');
+        newOverlay.className = 'hero-overlay';
+        newOverlay.innerHTML = `
+        <div class="interaction-hint">
+            <span class="material-symbols-rounded">touch_app</span>
+            <span>Interact with the shapes!</span>
+        </div>
+    `;
+        heroCanvas.appendChild(newOverlay);
+
+        heroCanvas.addEventListener('mouseenter', () => {
+            newOverlay.style.opacity = '1';
+        });
+
+        heroCanvas.addEventListener('mouseleave', () => {
+            newOverlay.style.opacity = '0';
+        });
     }
 
     // 9. Animasi masuk awal dengan anime.js

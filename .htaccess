@@ -1,13 +1,13 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteBase /Geometry_calculating/
-
-    # Allow direct access to files that exist in the public directory
-    RewriteCond %{REQUEST_URI} ^/Geometry_calculating/public/
-    RewriteRule ^ - [L]
-
-    # For all other requests, send them to the front controller (index.php)
+    
+    # Handle both built-in server and web server
+    RewriteBase /
+    
+    # Skip existing files and directories
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
+    
+    # Route everything through public/index.php
     RewriteRule ^(.*)$ public/index.php [L,QSA]
 </IfModule>

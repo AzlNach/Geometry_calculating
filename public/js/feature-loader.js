@@ -1,15 +1,16 @@
 document.addEventListener('DOMContentLoaded', function() {
-
     const featureButtons = document.querySelectorAll('.features-section .btn, .features-section .card-title a');
-
 
     featureButtons.forEach(button => {
         button.addEventListener('click', function(e) {
             e.preventDefault();
 
+            let featureUrl = this.getAttribute('href');
 
-            const featureUrl = this.getAttribute('href');
-
+            // Remove leading slash if present for consistency
+            if (featureUrl.startsWith('/')) {
+                featureUrl = featureUrl.substring(1);
+            }
 
             const demoSection = document.getElementById('demo-previews-section');
             if (demoSection) {
@@ -18,55 +19,71 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
 
-
             const demoContent = document.getElementById('demo-content');
             demoContent.innerHTML = '<div class="col-12 text-center"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div></div>';
 
-
-            fetch(featureUrl)
+            // Add AJAX header and proper URL handling
+            fetch(featureUrl, {
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
                 .then(response => {
                     if (!response.ok) {
-                        throw new Error('Network response was not ok');
+                        console.error('Failed to fetch:', featureUrl, 'Status:', response.status);
+                        throw new Error(`Network response was not ok: ${response.status}`);
                     }
                     return response.text();
                 })
                 .then(html => {
-
                     const parser = new DOMParser();
                     const doc = parser.parseFromString(html, 'text/html');
-
 
                     const contentSection = doc.querySelector('.demo-section, .demo-previews-section');
 
                     if (contentSection) {
-
                         demoContent.innerHTML = contentSection.innerHTML;
 
-
+                        // Execute scripts with better error handling
                         const scripts = contentSection.querySelectorAll('script');
                         scripts.forEach(script => {
-                            const newScript = document.createElement('script');
-                            if (script.src) {
-                                newScript.src = script.src;
-                            } else {
-                                newScript.textContent = script.textContent;
+                            try {
+                                const newScript = document.createElement('script');
+                                if (script.src) {
+                                    newScript.src = script.src;
+                                    newScript.onload = () => console.log('Script loaded:', script.src);
+                                    newScript.onerror = () => console.error('Script failed:', script.src);
+                                } else {
+                                    newScript.textContent = script.textContent;
+                                }
+                                document.body.appendChild(newScript);
+
+                                // Clean up after execution
+                                setTimeout(() => {
+                                    if (newScript.parentNode && !newScript.src) {
+                                        newScript.parentNode.removeChild(newScript);
+                                    }
+                                }, 100);
+                            } catch (scriptError) {
+                                console.error('Error executing script:', scriptError);
                             }
-                            document.body.appendChild(newScript).parentNode.removeChild(newScript);
                         });
                     } else {
                         throw new Error('Could not find content section in fetched HTML');
                     }
-
-
-                    const featureTitleElement = this.closest('.card').querySelector('.card-title');
-                    const currentFeatureElement = document.getElementById('current-feature-title');
-                    if (featureTitleElement && currentFeatureElement) {
-                        currentFeatureElement.textContent = featureTitleElement.textContent;
-                    }
                 })
                 .catch(error => {
                     console.error('Error loading feature:', error);
-                    demoContent.innerHTML = '<div class="col-12"><div class="alert alert-danger">Error loading feature. Please try again.</div></div>';
+                    demoContent.innerHTML = `
+                        <div class="col-12">
+                            <div class="alert alert-danger">
+                                <h5>Error loading feature</h5>
+                                <p>Please try again. If the problem persists, check the console for details.</p>
+                                <small>Debug: ${error.message}</small>
+                                <br><small>URL: ${featureUrl}</small>
+                            </div>
+                        </div>
+                    `;
                 });
         });
     });
