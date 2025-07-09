@@ -314,13 +314,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 8. Tambahkan efek hover pada canvas
     const overlay = heroCanvas.querySelector('.hero-overlay');
-    heroCanvas.addEventListener('mouseenter', () => {
-        overlay.style.opacity = '1';
-    });
+    if (overlay) { // Check if overlay exists
+        heroCanvas.addEventListener('mouseenter', () => {
+            overlay.style.opacity = '1';
+        });
 
-    heroCanvas.addEventListener('mouseleave', () => {
-        overlay.style.opacity = '0';
-    });
+        heroCanvas.addEventListener('mouseleave', () => {
+            overlay.style.opacity = '0';
+        });
+    } else {
+        console.warn("Hero overlay element (.hero-overlay) not found inside #hero-canvas.");
+    }
 
     // 9. Animasi masuk awal dengan anime.js
     anime({
@@ -331,23 +335,37 @@ document.addEventListener('DOMContentLoaded', function() {
         delay: 500
     });
 
-    anime({
-        targets: shapes,
-        position: {
-            value: (el, i) => {
-                const radius = 10 + Math.random() * 5;
-                const theta = Math.random() * Math.PI * 2;
-                const phi = Math.acos(2 * Math.random() - 1);
+    shapes.forEach((shape, i) => {
+        const targetPosition = { // Temporary object for anime.js to tween
+            x: shape.position.x,
+            y: shape.position.y,
+            z: shape.position.z
+        };
 
-                return [
-                    radius * Math.sin(phi) * Math.cos(theta),
-                    radius * Math.sin(phi) * Math.sin(theta),
-                    radius * Math.cos(phi)
-                ];
-            },
+        const newPosArr = (() => { // IIFE to calculate new position
+            const radius = 10 + Math.random() * 5;
+            const theta = Math.random() * Math.PI * 2;
+            const phi = Math.acos(2 * Math.random() - 1);
+            return [
+                radius * Math.sin(phi) * Math.cos(theta),
+                radius * Math.sin(phi) * Math.sin(theta),
+                radius * Math.cos(phi)
+            ];
+        })();
+
+        anime({
+            targets: targetPosition, // Animate the temporary object
+            x: newPosArr[0],
+            y: newPosArr[1],
+            z: newPosArr[2],
             duration: 1500,
-            delay: anime.stagger(100),
-            easing: 'easeOutElastic'
-        }
+            // Use anime.stagger with a function to apply delay correctly in a loop
+            delay: anime.stagger(100, { start: 500 })(i, shapes.length),
+            easing: 'easeOutElastic',
+            update: function() {
+                // Apply the animated values to the actual shape's position
+                shape.position.set(targetPosition.x, targetPosition.y, targetPosition.z);
+            }
+        });
     });
 });
