@@ -43,11 +43,19 @@ if ($isHomePage) {
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <h1 class="display-4 fw-bold mb-3">Geometry Calculator</h1>
-                    <p class="lead mb-4">Calculate area, perimeter, and volume of geometric shapes with real-time interactive visualizations.</p>
+                    <p class="lead mb-4 " style="color:rgb(255, 255, 255);">Calculate area, perimeter, and volume of geometric shapes with real-time interactive visualizations.</p>
                     <a href="#demo-previews-section" class="btn btn-primary btn-lg">Try Now</a>
                 </div>
                 <div class="col-md-6">
-                    <div id="hero-canvas" class="rounded shadow" style="height: 400px; background-color: #f8f9fa;"></div>
+                    <div id="hero-canvas" style="height: 550px; width: 100%; position: relative;">
+                        <!-- Tambahkan overlay untuk efek interaktif -->
+                        <div class="hero-overlay">
+                            <div class="interaction-hint">
+                                <span class="material-symbols-rounded">touch_app</span>
+                                <span>Interact with the shapes!</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

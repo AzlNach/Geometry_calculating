@@ -1,156 +1,353 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // --- START: IMPROVED THREE.JS ANIMATION ---
     const heroCanvas = document.getElementById('hero-canvas');
-    if (heroCanvas) {
-        // 1. Scene, Camera, and Renderer Setup
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, heroCanvas.clientWidth / heroCanvas.clientHeight, 0.1, 1000);
-        camera.position.z = 25; // Pindahkan kamera sedikit ke belakang untuk melihat lebih banyak
+    if (!heroCanvas) return;
 
-        const renderer = new THREE.WebGLRenderer({
-            antialias: true,
-            alpha: true // Aktifkan latar belakang transparan
-        });
-        renderer.setSize(heroCanvas.clientWidth, heroCanvas.clientHeight);
-        renderer.setPixelRatio(window.devicePixelRatio); // Render tajam di layar HiDPI
-        heroCanvas.innerHTML = ''; // Hapus konten lama jika ada
-        heroCanvas.appendChild(renderer.domElement);
+    // 1. Inisialisasi scene, camera, dan renderer
+    const scene = new THREE.Scene();
+    scene.background = null; // Background transparan
 
-        // 2. Enhanced Lighting
-        // Cahaya Hemisphere memberikan warna gradien pada scene (biru langit ke biru tua)
-        const hemisphereLight = new THREE.HemisphereLight(0x00A8E8, 0x213448, 1);
-        scene.add(hemisphereLight);
+    const camera = new THREE.PerspectiveCamera(
+        75,
+        heroCanvas.clientWidth / heroCanvas.clientHeight,
+        0.1,
+        1000
+    );
+    camera.position.z = 30;
 
-        // Cahaya Directional meniru matahari, memberikan bayangan dan highlight yang jelas
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2);
-        directionalLight.position.set(10, 10, 10);
-        scene.add(directionalLight);
+    const renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        alpha: true
+    });
+    renderer.setSize(heroCanvas.clientWidth, heroCanvas.clientHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    heroCanvas.innerHTML = '';
+    heroCanvas.appendChild(renderer.domElement);
 
-        // 3. Create a Group of Complex Shapes
-        const shapesGroup = new THREE.Group();
-        const shapeGeometries = [
-            new THREE.IcosahedronGeometry(1.2, 0), // Polihedron
-            new THREE.DodecahedronGeometry(1.2, 0), // Polihedron lain
-            new THREE.TorusKnotGeometry(1, 0.3, 100, 16), // Simpul
-            new THREE.TorusGeometry(1.2, 0.25, 16, 100), // Donat
-        ];
+    // 2. Enhanced Lighting dengan efek dinamis
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambientLight);
 
-        // Material yang lebih modern dengan efek metalik dan reflektif
-        const solidMaterial = new THREE.MeshStandardMaterial({
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    directionalLight.position.set(5, 5, 5);
+    scene.add(directionalLight);
+
+    const pointLight = new THREE.PointLight(0x00a8e8, 1, 100);
+    pointLight.position.set(0, 0, 20);
+    scene.add(pointLight);
+
+    // 3. Create a Group of Complex Shapes with physics
+    const shapesGroup = new THREE.Group();
+    const geometries = [
+        new THREE.IcosahedronGeometry(1.5, 0),
+        new THREE.DodecahedronGeometry(1.5, 0),
+        new THREE.TorusKnotGeometry(1.2, 0.4, 128, 32),
+        new THREE.TorusGeometry(1.5, 0.4, 32, 100),
+        new THREE.OctahedronGeometry(1.5, 0),
+        new THREE.ConeGeometry(1.2, 2, 8)
+    ];
+
+    const materials = [
+        new THREE.MeshPhysicalMaterial({
             color: 0xffffff,
-            metalness: 0.2,
+            metalness: 0.6,
+            roughness: 0.2,
+            clearcoat: 0.8,
+            transparent: true,
+            opacity: 0.9,
+            side: THREE.DoubleSide
+        }),
+        new THREE.MeshPhysicalMaterial({
+            color: 0x00a8e8,
+            metalness: 0.4,
             roughness: 0.3,
             transparent: true,
-            opacity: 0.9
-        });
-
-        // Material wireframe untuk memberikan detail teknis
-        const wireframeMaterial = new THREE.MeshBasicMaterial({
-            color: 0x00A8E8, // Warna aksen untuk wireframe
-            wireframe: true,
+            opacity: 0.85,
+            side: THREE.DoubleSide
+        }),
+        new THREE.MeshPhysicalMaterial({
+            color: 0x213448,
+            metalness: 0.7,
+            roughness: 0.1,
             transparent: true,
-            opacity: 0.25
-        });
+            opacity: 0.9,
+            side: THREE.DoubleSide
+        })
+    ];
 
-        // Buat 50 bentuk acak
-        for (let i = 0; i < 50; i++) {
-            const geometry = shapeGeometries[Math.floor(Math.random() * shapeGeometries.length)];
-            const shapeObject = new THREE.Group();
+    // Particle system untuk efek latar belakang
+    const particleCount = 500;
+    const particles = new THREE.BufferGeometry();
+    const posArray = new Float32Array(particleCount * 3);
 
-            const solidMesh = new THREE.Mesh(geometry, solidMaterial);
-            const wireframeMesh = new THREE.Mesh(geometry, wireframeMaterial);
-            // Buat wireframe sedikit lebih besar untuk menghindari tumpang tindih visual (z-fighting)
-            wireframeMesh.scale.set(1.001, 1.001, 1.001);
+    for (let i = 0; i < particleCount * 3; i++) {
+        posArray[i] = (Math.random() - 0.5) * 100;
+    }
 
-            shapeObject.add(solidMesh);
-            shapeObject.add(wireframeMesh);
+    particles.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+    const particleMaterial = new THREE.PointsMaterial({
+        size: 0.1,
+        color: 0xffffff,
+        transparent: true,
+        opacity: 0.5
+    });
 
-            // Posisi acak dalam area seperti bola
-            const [x, y, z] = [
-                (Math.random() - 0.5) * 40,
-                (Math.random() - 0.5) * 40,
-                (Math.random() - 0.5) * 40
-            ];
-            shapeObject.position.set(x, y, z);
+    const particleMesh = new THREE.Points(particles, particleMaterial);
+    scene.add(particleMesh);
 
-            // Rotasi awal acak
-            shapeObject.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI);
+    // Animasi partikel dengan anime.js
+    anime({
+        targets: particleMesh.geometry.attributes.position.array,
+        update: function(anim) {
+            const positions = particleMesh.geometry.attributes.position.array;
+            for (let i = 0; i < positions.length; i += 3) {
+                positions[i] += (Math.random() - 0.5) * 0.1;
+                positions[i + 1] += (Math.random() - 0.5) * 0.1;
+                positions[i + 2] += (Math.random() - 0.5) * 0.1;
+            }
+            particleMesh.geometry.attributes.position.needsUpdate = true;
+        },
+        duration: Infinity
+    });
 
-            // Skala acak
-            const scale = Math.random() * 0.4 + 0.5;
-            shapeObject.scale.set(scale, scale, scale);
+    // 4. Shape creation with physics simulation
+    const shapes = [];
+    const shapeCount = 20;
 
-            // Simpan kecepatan rotasi acak untuk loop animasi
-            shapeObject.userData.rotationSpeed = {
-                x: (Math.random() - 0.5) * 0.005,
-                y: (Math.random() - 0.5) * 0.005
-            };
-            shapesGroup.add(shapeObject);
-        }
-        scene.add(shapesGroup);
+    for (let i = 0; i < shapeCount; i++) {
+        const geometry = geometries[Math.floor(Math.random() * geometries.length)];
+        const material = materials[Math.floor(Math.random() * materials.length)];
 
-        // 4. Mouse Interaction
-        let mouse = new THREE.Vector2();
-        const onMouseMove = (event) => {
-            // Normalisasi posisi mouse dari -1 hingga 1
-            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+        const shape = new THREE.Mesh(geometry, material);
+
+        // Position with spherical distribution
+        const radius = 15 + Math.random() * 10;
+        const theta = Math.random() * Math.PI * 2;
+        const phi = Math.acos(2 * Math.random() - 1);
+
+        shape.position.set(
+            radius * Math.sin(phi) * Math.cos(theta),
+            radius * Math.sin(phi) * Math.sin(theta),
+            radius * Math.cos(phi)
+        );
+
+        // Random scale
+        const scale = 0.8 + Math.random() * 0.8;
+        shape.scale.set(scale, scale, scale);
+
+        // Random rotation
+        shape.rotation.set(
+            Math.random() * Math.PI * 2,
+            Math.random() * Math.PI * 2,
+            Math.random() * Math.PI * 2
+        );
+
+        // Physics properties
+        shape.userData = {
+            velocity: new THREE.Vector3(
+                (Math.random() - 0.5) * 0.1,
+                (Math.random() - 0.5) * 0.1,
+                (Math.random() - 0.5) * 0.1
+            ),
+            rotationSpeed: new THREE.Vector3(
+                (Math.random() - 0.5) * 0.01,
+                (Math.random() - 0.5) * 0.01,
+                (Math.random() - 0.5) * 0.01
+            ),
+            hovered: false,
+            originalColor: material.color.clone(),
+            originalScale: scale
         };
-        window.addEventListener('mousemove', onMouseMove, false);
 
-        // 5. Animation Loop
-        const clock = new THREE.Clock();
-        const animate = () => {
-            requestAnimationFrame(animate);
+        shapes.push(shape);
+        shapesGroup.add(shape);
+    }
 
-            // Animasikan setiap bentuk secara individual
-            shapesGroup.children.forEach(shape => {
-                shape.rotation.x += shape.userData.rotationSpeed.x;
-                shape.rotation.y += shape.userData.rotationSpeed.y;
+    scene.add(shapesGroup);
+
+    // 5. Mouse Interaction
+    const mouse = new THREE.Vector2();
+    const raycaster = new THREE.Raycaster();
+
+    window.addEventListener('mousemove', (event) => {
+        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    });
+
+    // Interaksi klik untuk efek ledakan
+    window.addEventListener('click', () => {
+        raycaster.setFromCamera(mouse, camera);
+        const intersects = raycaster.intersectObjects(shapes);
+
+        if (intersects.length > 0) {
+            const clickedShape = intersects[0].object;
+
+            // Anime.js untuk efek ledakan
+            anime({
+                targets: clickedShape.position,
+                x: clickedShape.position.x * 2,
+                y: clickedShape.position.y * 2,
+                z: clickedShape.position.z * 2,
+                duration: 1000,
+                easing: 'easeOutExpo',
+                complete: () => {
+                    anime({
+                        targets: clickedShape.position,
+                        x: clickedShape.position.x / 2,
+                        y: clickedShape.position.y / 2,
+                        z: clickedShape.position.z / 2,
+                        duration: 2000,
+                        easing: 'easeOutElastic'
+                    });
+                }
             });
 
-            // Animasikan seluruh grup berdasarkan posisi mouse untuk efek paralaks
-            // Menggunakan 'lerp' untuk transisi yang mulus
-            const targetRotationX = (mouse.y * Math.PI) / 12;
-            const targetRotationY = (mouse.x * Math.PI) / 12;
-            shapesGroup.rotation.x = THREE.MathUtils.lerp(shapesGroup.rotation.x, targetRotationX, 0.05);
-            shapesGroup.rotation.y = THREE.MathUtils.lerp(shapesGroup.rotation.y, targetRotationY, 0.05);
+            // Animasi material dengan anime.js
+            anime({
+                targets: clickedShape.material,
+                color: new THREE.Color(Math.random() * 0xffffff),
+                duration: 500,
+                easing: 'easeOutQuad'
+            });
+        }
+    });
 
-            renderer.render(scene, camera);
-        };
-        animate();
+    // 6. Animation Loop dengan physics
+    const clock = new THREE.Clock();
 
-        // 6. Handle Window Resize
-        const onWindowResize = () => {
-            const width = heroCanvas.clientWidth;
-            const height = heroCanvas.clientHeight;
-            camera.aspect = width / height;
-            camera.updateProjectionMatrix();
-            renderer.setSize(width, height);
-        };
-        window.addEventListener('resize', onWindowResize, false);
-    }
-    // --- END: IMPROVED THREE.JS ANIMATION ---
+    const animate = () => {
+        requestAnimationFrame(animate);
 
+        const delta = clock.getDelta();
+        const time = clock.getElapsedTime();
 
-    // Handle feature carousel resizing
-    const carousel = document.querySelector('.carousel');
-    const group = document.querySelector('.group');
+        // Animate particles
+        particleMesh.rotation.y = time * 0.1;
 
-    function adjustCarousel() {
-        if (!carousel || !group) return;
-        const uniqueCardCount = Math.floor(group.children.length / 2);
-        if (uniqueCardCount === 0) return;
+        // Animate point light
+        pointLight.position.x = Math.sin(time) * 15;
+        pointLight.position.y = Math.cos(time * 0.7) * 10;
 
-        document.documentElement.style.setProperty('--card-count', uniqueCardCount);
-        const cardWidth = document.querySelector('.card-container').offsetWidth;
-        document.documentElement.style.setProperty('--card-width', cardWidth + 'px');
-        const totalWidth = cardWidth * uniqueCardCount;
-        document.documentElement.style.setProperty('--total-width', totalWidth + 'px');
-        const duration = Math.max(15, totalWidth / 60);
-        group.style.animationDuration = `${duration}s`;
-    }
+        // Physics simulation
+        shapes.forEach(shape => {
+            // Update position with velocity
+            shape.position.add(shape.userData.velocity);
 
-    window.addEventListener('load', adjustCarousel);
-    window.addEventListener('resize', adjustCarousel);
+            // Update rotation
+            shape.rotation.x += shape.userData.rotationSpeed.x;
+            shape.rotation.y += shape.userData.rotationSpeed.y;
+            shape.rotation.z += shape.userData.rotationSpeed.z;
+
+            // Boundary collision
+            const distance = shape.position.length();
+            if (distance > 25) {
+                shape.userData.velocity.multiplyScalar(-0.8);
+            }
+
+            // Raycasting for hover effect
+            raycaster.setFromCamera(mouse, camera);
+            const intersects = raycaster.intersectObject(shape);
+
+            if (intersects.length > 0 && !shape.userData.hovered) {
+                shape.userData.hovered = true;
+
+                // Anime.js hover effect
+                anime({
+                    targets: shape.scale,
+                    x: shape.userData.originalScale * 1.5,
+                    y: shape.userData.originalScale * 1.5,
+                    z: shape.userData.originalScale * 1.5,
+                    duration: 300,
+                    easing: 'easeOutQuad'
+                });
+
+                anime({
+                    targets: shape.material,
+                    color: new THREE.Color(0xffcc00),
+                    duration: 300,
+                    easing: 'easeOutQuad'
+                });
+            } else if (intersects.length === 0 && shape.userData.hovered) {
+                shape.userData.hovered = false;
+
+                anime({
+                    targets: shape.scale,
+                    x: shape.userData.originalScale,
+                    y: shape.userData.originalScale,
+                    z: shape.userData.originalScale,
+                    duration: 500,
+                    easing: 'easeOutElastic'
+                });
+
+                anime({
+                    targets: shape.material,
+                    color: shape.userData.originalColor,
+                    duration: 800,
+                    easing: 'easeOutQuad'
+                });
+            }
+        });
+
+        // Group rotation based on mouse
+        shapesGroup.rotation.x = THREE.MathUtils.lerp(
+            shapesGroup.rotation.x,
+            mouse.y * 0.2,
+            0.05
+        );
+
+        shapesGroup.rotation.y = THREE.MathUtils.lerp(
+            shapesGroup.rotation.y,
+            mouse.x * 0.2,
+            0.05
+        );
+
+        renderer.render(scene, camera);
+    };
+
+    animate();
+
+    // 7. Handle Window Resize
+    window.addEventListener('resize', () => {
+        camera.aspect = heroCanvas.clientWidth / heroCanvas.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(heroCanvas.clientWidth, heroCanvas.clientHeight);
+    });
+
+    // 8. Tambahkan efek hover pada canvas
+    const overlay = heroCanvas.querySelector('.hero-overlay');
+    heroCanvas.addEventListener('mouseenter', () => {
+        overlay.style.opacity = '1';
+    });
+
+    heroCanvas.addEventListener('mouseleave', () => {
+        overlay.style.opacity = '0';
+    });
+
+    // 9. Animasi masuk awal dengan anime.js
+    anime({
+        targets: shapesGroup.rotation,
+        y: [Math.PI * 2, 0],
+        duration: 2000,
+        easing: 'easeOutElastic',
+        delay: 500
+    });
+
+    anime({
+        targets: shapes,
+        position: {
+            value: (el, i) => {
+                const radius = 10 + Math.random() * 5;
+                const theta = Math.random() * Math.PI * 2;
+                const phi = Math.acos(2 * Math.random() - 1);
+
+                return [
+                    radius * Math.sin(phi) * Math.cos(theta),
+                    radius * Math.sin(phi) * Math.sin(theta),
+                    radius * Math.cos(phi)
+                ];
+            },
+            duration: 1500,
+            delay: anime.stagger(100),
+            easing: 'easeOutElastic'
+        }
+    });
 });
