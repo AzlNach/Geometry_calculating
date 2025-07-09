@@ -189,8 +189,7 @@ if ($isHomePage) {
 
         <section class="demo-previews-section mb-0" id="demo-previews-section">
             <div class="container">
-                <div class="row" id="demo-content">
-                    
+                <div class="row" id="demo-content">  
                     <?php include(TEMPLATES_DIR . '/pages/geometry-calculations.php'); ?>
                 </div>
             </div>

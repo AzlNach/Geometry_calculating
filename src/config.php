@@ -6,7 +6,7 @@ define('PUBLIC_DIR', BASE_DIR . '/public');
 define('TEMPLATES_DIR', BASE_DIR . '/src/templates');
 
 
-define('BASE_URL', '');
+define('BASE_URL', '/Geometry_calculating_R');
 define('PUBLIC_URL', BASE_URL);
 define('JS_URL', '/js');
 define('CSS_URL', '/css'); 

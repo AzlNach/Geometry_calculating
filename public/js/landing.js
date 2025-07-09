@@ -314,13 +314,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 8. Tambahkan efek hover pada canvas
     const overlay = heroCanvas.querySelector('.hero-overlay');
-    heroCanvas.addEventListener('mouseenter', () => {
-        overlay.style.opacity = '1';
-    });
+    if (overlay) {
+        heroCanvas.addEventListener('mouseenter', () => {
+            overlay.style.opacity = '1';
+        });
 
-    heroCanvas.addEventListener('mouseleave', () => {
-        overlay.style.opacity = '0';
-    });
+        heroCanvas.addEventListener('mouseleave', () => {
+            overlay.style.opacity = '0';
+        });
+    }
 
     // 9. Animasi masuk awal dengan anime.js
     anime({
@@ -331,23 +333,19 @@ document.addEventListener('DOMContentLoaded', function() {
         delay: 500
     });
 
-    anime({
-        targets: shapes,
-        position: {
-            value: (el, i) => {
-                const radius = 10 + Math.random() * 5;
-                const theta = Math.random() * Math.PI * 2;
-                const phi = Math.acos(2 * Math.random() - 1);
+    shapes.forEach((shape, i) => {
+        const radius = 10 + Math.random() * 5;
+        const theta = Math.random() * Math.PI * 2;
+        const phi = Math.acos(2 * Math.random() - 1);
 
-                return [
-                    radius * Math.sin(phi) * Math.cos(theta),
-                    radius * Math.sin(phi) * Math.sin(theta),
-                    radius * Math.cos(phi)
-                ];
-            },
+        anime({
+            targets: shape.position,
+            x: radius * Math.sin(phi) * Math.cos(theta),
+            y: radius * Math.sin(phi) * Math.sin(theta),
+            z: radius * Math.cos(phi),
             duration: 1500,
-            delay: anime.stagger(100),
+            delay: i * 100,
             easing: 'easeOutElastic'
-        }
+        });
     });
 });
