@@ -7,23 +7,35 @@ class Router {
     public function __construct($baseDir) {
         $this->baseDir = $baseDir;
         $this->routes = [
+            // Home page
             '/' => 'public/index.php',
             '/index.php' => 'public/index.php',
-            '/triangle-demo.php' => 'src/templates/pages/geometry-calculations/triangle-demo.php',
-            '/square-demo.php' => 'src/templates/pages/geometry-calculations/square-demo.php',
-            '/circle-demo.php' => 'src/templates/pages/geometry-calculations/circle-demo.php',
-            '/geometry-calculations.php' => 'src/templates/pages/geometry-calculations.php',
-            '/unit-conversion.php' => 'src/templates/pages/unit-conversion.php',
-            '/conversion-calculator.php' => 'src/templates/pages/conversion-calculator.php',
-            '/statistics-calculator.php' => 'src/templates/pages/statistics-calculator.php',
-            '/digital-data-converter.php' => 'src/templates/pages/digital-data-converter.php',
-            '/temperature-converter.php' => 'src/templates/pages/temperature-converter.php',
-            '/time-converter.php' => 'src/templates/pages/time-converter.php',
-            '/function-grapher-calculator.php' => 'src/templates/pages/function-grapher-calculator.php',
-            '/function-grapher.php' => 'src/templates/pages/function-grapher-calculator/function-grapher.php',
-            '/parametric-grapher.php' => 'src/templates/pages/function-grapher-calculator/parametric-grapher.php',
-            '/polar-grapher.php' => 'src/templates/pages/function-grapher-calculator/polar-grapher.php',
-            '/3d-function-grapher.php' => 'src/templates/pages/function-grapher-calculator/3d-function-grapher.php'
+
+            //geometry calculations
+            '/triangle-demo' => 'src/templates/pages/geometry-calculations/triangle-demo.php',
+            '/square-demo' => 'src/templates/pages/geometry-calculations/square-demo.php',
+            '/circle-demo' => 'src/templates/pages/geometry-calculations/circle-demo.php',
+            '/geometry-calculations' => 'src/templates/pages/geometry-calculations.php',
+            
+            //conversion calculator
+            '/conversion-calculator' => 'src/templates/pages/conversion-calculator.php',
+            '/unit-conversion' => 'src/templates/pages/conversion-calculator/unit-conversion.php',
+            '/temperature-converter' => 'src/templates/pages/conversion-calculator/temperature-converter.php',
+            '/time-converter' => 'src/templates/pages/conversion-calculator/time-converter.php',
+            '/digital-data-converter' => 'src/templates/pages/conversion-calculator/digital-data-converter.php',
+
+            //statistics calculator
+            '/statistics-calculator' => 'src/templates/pages/statistics-calculator.php',
+
+            // function grapher calculator
+            '/function-grapher-calculator' => 'src/templates/pages/function-grapher-calculator.php',
+            '/function-grapher' => 'src/templates/pages/function-grapher-calculator/function-grapher.php',
+            '/parametric-grapher' => 'src/templates/pages/function-grapher-calculator/parametric-grapher.php',
+            '/polar-grapher' => 'src/templates/pages/function-grapher-calculator/polar-grapher.php',
+            '/3d-function-grapher' => 'src/templates/pages/function-grapher-calculator/3d-function-grapher.php',
+            
+            // other pages
+            '/tutorials' => 'src/templates/pages/tutorials.php' 
         ];
     }
     

@@ -23,7 +23,7 @@ if ($isBuiltInServer || ($isLocalhost && isset($_SERVER['SERVER_PORT']) && $_SER
     }
 } else {
     // Running on web server
-    define('BASE_URL', '/Geometry_calculating');
+    define('BASE_URL', '/Geometry_calculating_R');
     define('PUBLIC_URL', BASE_URL . '/public');
 }
 

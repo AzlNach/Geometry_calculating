@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 })
                 .then(response => {
                     if (!response.ok) {
-                        console.error('Failed to fetch:', featureUrl, 'Status:', response.status);
+                        console.error('Failed to fetch:', fetchUrl, 'Status:', response.status);
                         throw new Error(`Network response was not ok: ${response.status}`);
                     }
                     return response.text();

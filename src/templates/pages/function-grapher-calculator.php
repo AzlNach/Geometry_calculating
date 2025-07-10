@@ -21,7 +21,7 @@ if (!$isAjax) {
                             <span class="material-symbols-rounded" style="font-size: 48px; color: #3b5998;">show_chart</span>
                         </div>
                         <p>Plot polynomial, trigonometric, and exponential functions with customizable ranges.</p>
-                        <a href="<?= BASE_URL ?>/function-grapher.php" class="btn btn-outline-primary">Open Demo</a>
+                        <a href="<?= BASE_URL ?>/function-grapher" class="btn btn-outline-primary">Open Demo</a>
                     </div>
                 </div>
             </div>
@@ -35,7 +35,7 @@ if (!$isAjax) {
                             <span class="material-symbols-rounded" style="font-size: 48px; color: #3b5998;">multiline_chart</span>
                         </div>
                         <p>Plot parametric functions x(t) and y(t) to create curves and complex shapes.</p>
-                        <a href="<?= BASE_URL ?>/parametric-grapher.php" class="btn btn-outline-primary">Open Demo</a>
+                        <a href="<?= BASE_URL ?>/parametric-grapher" class="btn btn-outline-primary">Open Demo</a>
                     </div>
                 </div>
             </div>
@@ -49,7 +49,7 @@ if (!$isAjax) {
                             <span class="material-symbols-rounded" style="font-size: 48px; color: #3b5998;">donut_large</span>
                         </div>
                         <p>Visualize polar functions r(θ) to create spirals, roses, and other polar curves.</p>
-                        <a href="<?= BASE_URL ?>/polar-grapher.php" class="btn btn-outline-primary">Open Demo</a>
+                        <a href="<?= BASE_URL ?>/polar-grapher" class="btn btn-outline-primary">Open Demo</a>
                     </div>
                 </div>
             </div>
@@ -63,7 +63,7 @@ if (!$isAjax) {
                             <span class="material-symbols-rounded" style="font-size: 48px; color: #3b5998;">view_in_ar</span>
                         </div>
                         <p>Plot 3D functions z(x,y) with interactive rotation and zoom capabilities.</p>
-                        <a href="<?= BASE_URL ?>/3d-function-grapher.php" class="btn btn-outline-primary">Open Demo</a>
+                        <a href="<?= BASE_URL ?>/3d-function-grapher" class="btn btn-outline-primary">Open Demo</a>
                     </div>
                 </div>
             </div>

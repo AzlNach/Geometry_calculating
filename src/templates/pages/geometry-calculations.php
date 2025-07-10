@@ -20,7 +20,7 @@ if (!$isAjax) {
                     <div class="card-body text-center">
                         <img src="<?= IMAGES_URL ?>/segitiga.png" alt="Triangle Demo" class="img-fluid mb-3" style="height: 150px; object-fit: contain; background-color: #f8f9fa;">
                         <p>Calculate the area of a triangle and see it visualized in real-time.</p>
-                        <a href="<?= BASE_URL ?>/triangle-demo.php" class="btn btn-outline-primary">Open Demo</a>
+                        <a href="<?= BASE_URL ?>/triangle-demo" class="btn btn-outline-primary">Open Demo</a>
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@ if (!$isAjax) {
                     <div class="card-body text-center">
                         <img src="<?= IMAGES_URL ?>/squre.png" alt="Square Demo" class="img-fluid mb-3" style="height: 150px; object-fit: contain; background-color: #f8f9fa;">
                         <p>Calculate area and perimeter of a square with interactive visualization.</p>
-                        <a href="<?= BASE_URL ?>/square-demo.php" class="btn btn-outline-primary">Open Demo</a>
+                        <a href="<?= BASE_URL ?>/square-demo" class="btn btn-outline-primary">Open Demo</a>
                     </div>
                 </div>
             </div>
@@ -44,7 +44,7 @@ if (!$isAjax) {
                     <div class="card-body text-center">
                         <img src="<?= IMAGES_URL ?>/—Pngtree—brush circle creative brush effect_6020152.png" alt="Circle Demo" class="img-fluid mb-3" style="height: 150px; object-fit: contain; ">
                         <p>Calculate area and circumference of a circle with interactive visualization.</p>
-                        <a href="<?= BASE_URL ?>/circle-demo.php" class="btn btn-outline-primary">Open Demo</a>
+                        <a href="<?= BASE_URL ?>/circle-demo" class="btn btn-outline-primary">Open Demo</a>
                     </div>
                 </div>
             </div>
