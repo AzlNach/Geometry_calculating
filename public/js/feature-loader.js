@@ -5,12 +5,15 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', function(e) {
             e.preventDefault();
 
-            let featureUrl = this.getAttribute('href');
+            let pagePath = this.getAttribute('href'); // This will be like "/geometry-calculations.php"
 
-            // Remove leading slash if present for consistency
-            if (featureUrl.startsWith('/')) {
-                featureUrl = featureUrl.substring(1);
+            // Ensure pagePath starts with a slash if it's a local path
+            if (!pagePath.startsWith('/') && !pagePath.startsWith('http')) {
+                pagePath = '/' + pagePath;
             }
+
+            // Construct the URL to target index.php with a query parameter
+            const fetchUrl = `/index.php?page=${encodeURIComponent(pagePath)}`;
 
             const demoSection = document.getElementById('demo-previews-section');
             if (demoSection) {
@@ -23,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
             demoContent.innerHTML = '<div class="col-12 text-center"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div></div>';
 
             // Add AJAX header and proper URL handling
-            fetch(featureUrl, {
+            fetch(fetchUrl, { // Use the new fetchUrl
                     headers: {
                         'X-Requested-With': 'XMLHttpRequest'
                     }
@@ -51,19 +54,11 @@ document.addEventListener('DOMContentLoaded', function() {
                                 const newScript = document.createElement('script');
                                 if (script.src) {
                                     newScript.src = script.src;
-                                    newScript.onload = () => console.log('Script loaded:', script.src);
-                                    newScript.onerror = () => console.error('Script failed:', script.src);
                                 } else {
                                     newScript.textContent = script.textContent;
                                 }
                                 document.body.appendChild(newScript);
-
-                                // Clean up after execution
-                                setTimeout(() => {
-                                    if (newScript.parentNode && !newScript.src) {
-                                        newScript.parentNode.removeChild(newScript);
-                                    }
-                                }, 100);
+                                console.log('Script executed successfully');
                             } catch (scriptError) {
                                 console.error('Error executing script:', scriptError);
                             }
@@ -85,6 +80,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                     `;
                 });
+            const debugBtn = document.createElement('button');
+            debugBtn.textContent = 'Debug Content';
+            debugBtn.onclick = () => alert('Current content: ' + demoContent.innerHTML.substring(0, 100) + '...');
+            demoContent.prepend(debugBtn);
         });
     });
 });

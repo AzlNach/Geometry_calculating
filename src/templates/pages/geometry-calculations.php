@@ -42,7 +42,7 @@ if (!$isAjax) {
                         <h3 class="card-title mb-0">Circle Calculator</h3>
                     </div>
                     <div class="card-body text-center">
-                        <img src="<?= IMAGES_URL ?>/circle.png" alt="Circle Demo" class="img-fluid mb-3" style="height: 150px; object-fit: contain; background-color: #f8f9fa;">
+                        <img src="<?= IMAGES_URL ?>/—Pngtree—brush circle creative brush effect_6020152.png" alt="Circle Demo" class="img-fluid mb-3" style="height: 150px; object-fit: contain; ">
                         <p>Calculate area and circumference of a circle with interactive visualization.</p>
                         <a href="<?= BASE_URL ?>/circle-demo.php" class="btn btn-outline-primary">Open Demo</a>
                     </div>

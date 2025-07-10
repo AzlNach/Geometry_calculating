@@ -190,8 +190,19 @@ if ($isHomePage) {
         <section class="demo-previews-section mb-0" id="demo-previews-section">
             <div class="container">
                 <div class="row" id="demo-content">
+                    <?php 
+                    $page = isset($_GET['page']) ? $_GET['page'] : '/pages/geometry-calculations.php';
+
+                    $page = str_replace('..', '', $page);
+                    $page = ltrim($page, '/');
                     
-                    <?php include(TEMPLATES_DIR . '/pages/geometry-calculations.php'); ?>
+
+                    if (strpos($page, 'pages/') !== 0) {
+                        $page = 'pages/' . $page;
+                    }
+                    
+                    include(TEMPLATES_DIR . '/' . $page); 
+                    ?>
                 </div>
             </div>
         </section>
