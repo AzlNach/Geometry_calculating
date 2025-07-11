@@ -187,7 +187,7 @@ if ($isHomePage) {
             </div>
         </section>
 
-        <section class="demo-previews-section mb-0" id="demo-previews-section">
+        <section class="demo-previews-section mb-0"  id="demo-previews-section">
             <div class="container">
                 <div class="row" id="demo-content">
                     <?php 

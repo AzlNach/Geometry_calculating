@@ -26,6 +26,7 @@ class Router {
 
             //statistics calculator
             '/statistics-calculator' => 'src/templates/pages/statistics-calculator.php',
+            '/data_management' => 'src/templates/pages/statistics-calculator/data_management.php',
 
             // function grapher calculator
             '/function-grapher-calculator' => 'src/templates/pages/function-grapher-calculator.php',
