@@ -21,7 +21,7 @@ if (!$isAjax) {
                             <span class="material-symbols-rounded" style="font-size: 48px; color: #3b5998;">straighten</span>
                         </div>
                         <p>Convert between different units of length, area, volume, and weight measurements.</p>
-                        <a href="<?= BASE_URL ?>/unit-conversion.php" class="btn btn-outline-primary">Open Demo</a>
+                        <a href="<?= BASE_URL ?>/unit-conversion" class="btn btn-outline-primary">Open Demo</a>
                     </div>
                 </div>
             </div>
@@ -35,7 +35,7 @@ if (!$isAjax) {
                             <span class="material-symbols-rounded" style="font-size: 48px; color: #3b5998;">storage</span>
                         </div>
                         <p>Convert digital data units like bytes, kilobytes, megabytes, gigabytes, and terabytes.</p>
-                        <a href="<?= BASE_URL ?>/digital-data-converter.php" class="btn btn-outline-primary">Open Demo</a>
+                        <a href="<?= BASE_URL ?>/digital-data-converter" class="btn btn-outline-primary">Open Demo</a>
                     </div>
                 </div>
             </div>
@@ -49,7 +49,7 @@ if (!$isAjax) {
                             <span class="material-symbols-rounded" style="font-size: 48px; color: #3b5998;">thermostat</span>
                         </div>
                         <p>Convert temperatures between Celsius, Fahrenheit, Kelvin, and Rankine scales.</p>
-                        <a href="<?= BASE_URL ?>/temperature-converter.php" class="btn btn-outline-primary">Open Demo</a>
+                        <a href="<?= BASE_URL ?>/temperature-converter" class="btn btn-outline-primary">Open Demo</a>
                     </div>
                 </div>
             </div>
@@ -63,7 +63,7 @@ if (!$isAjax) {
                             <span class="material-symbols-rounded" style="font-size: 48px; color: #3b5998;">schedule</span>
                         </div>
                         <p>Convert time units between seconds, minutes, hours, days, weeks, months, and years.</p>
-                        <a href="<?= BASE_URL ?>/time-converter.php" class="btn btn-outline-primary">Open Demo</a>
+                        <a href="<?= BASE_URL ?>/time-converter" class="btn btn-outline-primary">Open Demo</a>
                     </div>
                 </div>
             </div>

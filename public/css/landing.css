@@ -696,8 +696,8 @@ h6 {
     border-color: var(--primary-color) !important;
     color: white;
     font-weight: 500;
-    padding: 12px 28px;
-    border-radius: 10px;
+    padding: 12px 8px;
+    border-radius: 7px;
     transition: var(--transition);
     position: relative;
     overflow: hidden;
@@ -934,5 +934,322 @@ h6 {
     100% {
         transform: scale(1);
         opacity: 0.8;
+    }
+}
+
+.demo-section {
+    padding: 80px 0;
+    background: rgb(255, 255, 255);
+    min-height: 100vh;
+}
+
+.demo-section .container {
+    max-width: 1200px;
+}
+
+
+/* Main title styling for data management */
+
+.demo-section h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 3rem;
+    position: relative;
+    text-align: center;
+}
+
+.demo-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
+    border-radius: 2px;
+}
+
+
+/* Enhanced navigation tabs */
+
+.nav-tabs {
+    border: none;
+    margin-bottom: 2rem;
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 10px;
+    box-shadow: var(--shadow-sm);
+}
+
+.nav-tabs .nav-item {
+    margin-bottom: 0;
+}
+
+.nav-tabs .nav-link {
+    border: none;
+    color: var(--text-light);
+    font-weight: 500;
+    padding: 12px 24px;
+    border-radius: calc(var(--border-radius) - 6px);
+    transition: var(--transition);
+    font-family: 'Inter', sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-tabs .nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 168, 232, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.nav-tabs .nav-link:hover::before {
+    left: 100%;
+}
+
+.nav-tabs .nav-link:hover {
+    color: var(--accent-color);
+    background: rgba(0, 168, 232, 0.05);
+    transform: translateY(-2px);
+}
+
+.nav-tabs .nav-link.active {
+    color: white;
+    background: var(--primary-color);
+    box-shadow: var(--shadow-md);
+}
+
+.nav-tabs .nav-link i {
+    margin-right: 8px;
+    font-size: 1.1rem;
+}
+
+
+/* Enhanced card headers */
+
+.card-header.bg-success {
+    background: #28a745 !important;
+}
+
+.card-header.bg-warning {
+    background: #ffc107 !important;
+    color: var(--primary-color) !important;
+}
+
+.card-header.bg-danger {
+    background: #dc3545 !important;
+}
+
+
+/* Data input method cards enhancement */
+
+.card-body.text-center i {
+    transition: var(--transition);
+}
+
+.card:hover .card-body.text-center i {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.card-body.text-center h5 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.card-body.text-center p {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+}
+
+
+/* Enhanced form styling */
+
+.form-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.form-control,
+.form-select {
+    border: 2px solid var(--light-gray);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-family: 'Inter', sans-serif;
+    transition: var(--transition);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.2rem rgba(0, 168, 232, 0.25);
+}
+
+
+/* Enhanced table styling */
+
+.table thead th {
+    background: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    border: none;
+    padding: 1rem;
+}
+
+.table tbody td {
+    padding: 1rem;
+    vertical-align: middle;
+    border-color: var(--light-gray);
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background: rgba(0, 168, 232, 0.02);
+}
+
+.table-responsive {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+
+/* Enhanced alert styling */
+
+.alert {
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 1rem 1.5rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.alert-info {
+    background: linear-gradient(135deg, rgba(0, 168, 232, 0.1), rgba(0, 168, 232, 0.05));
+    color: var(--primary-color);
+    border-left: 4px solid var(--accent-color);
+}
+
+
+/* Statistics cards enhancement */
+
+.card-body table td:first-child {
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.card-body table td:last-child {
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+
+/* Chart container */
+
+#data-chart {
+    border-radius: var(--border-radius);
+    background: white;
+}
+
+
+/* Tab content animation */
+
+.tab-pane {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.tab-pane.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* File upload styling */
+
+#file-preview {
+    border: 2px dashed var(--light-gray);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    text-align: center;
+    color: var(--text-light);
+    margin-top: 1rem;
+}
+
+
+/* Results highlighting */
+
+.result-highlight {
+    background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+    color: white;
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    margin: 1rem 0;
+    font-weight: 600;
+}
+
+
+/* Icon color overrides for data management */
+
+.text-primary .fas,
+.text-primary .fa {
+    color: var(--primary-color) !important;
+}
+
+.text-success .fas,
+.text-success .fa {
+    color: #28a745 !important;
+}
+
+.text-info .fas,
+.text-info .fa {
+    color: #17a2b8 !important;
+}
+
+.text-warning .fas,
+.text-warning .fa {
+    color: #ffc107 !important;
+}
+
+.text-danger .fas,
+.text-danger .fa {
+    color: #dc3545 !important;
+}
+
+
+/* Responsive adjustments for data management */
+
+@media (max-width: 768px) {
+    .demo-section {
+        padding: 40px 0;
+    }
+    .demo-section h2 {
+        font-size: 2rem;
+    }
+    .nav-tabs .nav-link {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .demo-section h2 {
+        font-size: 1.75rem;
+    }
+    .nav-tabs {
+        padding: 5px;
+    }
+    .nav-tabs .nav-link {
+        padding: 8px 12px;
+        font-size: 0.85rem;
     }
 }

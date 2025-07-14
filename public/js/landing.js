@@ -322,6 +322,25 @@ document.addEventListener('DOMContentLoaded', function() {
         heroCanvas.addEventListener('mouseleave', () => {
             overlay.style.opacity = '0';
         });
+    } else {
+        // Jika overlay tidak ditemukan, buat secara dinamis
+        const newOverlay = document.createElement('div');
+        newOverlay.className = 'hero-overlay';
+        newOverlay.innerHTML = `
+        <div class="interaction-hint">
+            <span class="material-symbols-rounded">touch_app</span>
+            <span>Interact with the shapes!</span>
+        </div>
+    `;
+        heroCanvas.appendChild(newOverlay);
+
+        heroCanvas.addEventListener('mouseenter', () => {
+            newOverlay.style.opacity = '1';
+        });
+
+        heroCanvas.addEventListener('mouseleave', () => {
+            newOverlay.style.opacity = '0';
+        });
     }
 
     // 9. Animasi masuk awal dengan anime.js
@@ -334,18 +353,36 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     shapes.forEach((shape, i) => {
-        const radius = 10 + Math.random() * 5;
-        const theta = Math.random() * Math.PI * 2;
-        const phi = Math.acos(2 * Math.random() - 1);
+        const targetPosition = { // Temporary object for anime.js to tween
+            x: shape.position.x,
+            y: shape.position.y,
+            z: shape.position.z
+        };
+
+        const newPosArr = (() => { // IIFE to calculate new position
+            const radius = 10 + Math.random() * 5;
+            const theta = Math.random() * Math.PI * 2;
+            const phi = Math.acos(2 * Math.random() - 1);
+            return [
+                radius * Math.sin(phi) * Math.cos(theta),
+                radius * Math.sin(phi) * Math.sin(theta),
+                radius * Math.cos(phi)
+            ];
+        })();
 
         anime({
-            targets: shape.position,
-            x: radius * Math.sin(phi) * Math.cos(theta),
-            y: radius * Math.sin(phi) * Math.sin(theta),
-            z: radius * Math.cos(phi),
+            targets: targetPosition, // Animate the temporary object
+            x: newPosArr[0],
+            y: newPosArr[1],
+            z: newPosArr[2],
             duration: 1500,
-            delay: i * 100,
-            easing: 'easeOutElastic'
+            // Use anime.stagger with a function to apply delay correctly in a loop
+            delay: anime.stagger(100, { start: 500 })(i, shapes.length),
+            easing: 'easeOutElastic',
+            update: function() {
+                // Apply the animated values to the actual shape's position
+                shape.position.set(targetPosition.x, targetPosition.y, targetPosition.z);
+            }
         });
     });
 });
