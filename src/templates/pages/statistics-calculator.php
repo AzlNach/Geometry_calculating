@@ -19,7 +19,7 @@ if (!$isAjax) {
                     </div>
                     <div class="card-body text-center">
                         <div class="feature-icon mb-3 mx-auto" style="width: 80px; height: 80px; background-color: #f8f9fa; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                            <span class="material-symbols-rounded" style="font-size: 48px; color: #3b5998;">straighten</span>
+                            <span class="material-symbols-rounded" style="font-size: 48px; color: #3b5998;">analytics</span>
                         </div>
                         <p>Input your data points, and the calculator will automatically calculate the mean, median, mode, range, standard deviation, variance, sum, and count.</p>
                         <a href="<?= BASE_URL ?>/data_management" class="btn btn-outline-primary">Open Demo</a>
